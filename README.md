@@ -89,3 +89,59 @@ Frontend-kehitys: backend porttiin 8000, `npm run dev` frontend-kansiossa portti
 - Aineiston uudelleenluonti: `scripts/build_fixtures.py` kirjoittaa keksityt lähdeaineistot deterministisesti. Se ei tyhjennä tallennettuja kortteja tai vanhoja analyysisnapshotteja.
 
 Arkkitehtuuri, esityspolku, päätökset ja jatkokehitys löytyvät `docs`-kansiosta.
+
+
+## Aineiston vaihto (22.9.2026)
+
+Oletusaineisto on nyt `demo-data/JJ-dataset2.json`. Sen voi vaihtaa asettamalla
+`DATASET_PATH=demo-data/dataset.json` paikalliseen .env-tiedostoon (polku projektin juuresta).
+
+Uuden aineiston validointi ja tavoiteasiakasprofiilin päivitys:
+
+```powershell
+.venv/Scripts/python.exe scripts/seed.py --update-profile
+```
+
+Odoo-tilassa päivitä lisäksi Odoon demotietueet:
+
+```powershell
+.venv/Scripts/python.exe scripts/seed.py --odoo --update-profile
+```
+
+Alustus päivittää samoilla lähdetunnisteilla olevat demotietueet. Se ei poista vanhan
+aineiston ylimääräisiä Odoo-tietueita eikä aikaisempia analyysejä tai palvelukortteja.
+--update-profile korvaa käyttöliittymässä tallennetun tavoiteasiakkaan aineiston profiililla.
+Käynnistä backend uudelleen koodimuutoksen jälkeen, päivitä selain ja tee uusi analyysi.
+Vanhoilla analyyseillä on oma alkuperäinen tilannekuvansa.
+
+JJ-aineistossa on 7 palvelua, 5 asiakasta, 4 projektia, 8 yleistä muistiinpanoa,
+4 myyntimahdollisuutta ja 3 kilpailijakorttia. project_id=null tarkoittaa yleistä
+muistiinpanoa: alkuperä on käyttäjän ilmoittama, eikä tekstiä ole vahvistettu
+projektimuistiinpanosta. Sellainen havainto ei todista projektin tai asiakkaan ongelmaa.
+Projektiviitteellisten havaintojen lainaukset tarkistetaan edelleen projektin tekstistä.
+Ideointiin vaaditaan vähintään kaksi eri projektia tai yleistä muistiinpanoa;
+raja ei ole arvio näytön laadusta. Vanha tallennettu esimerkkivastaus on käytettävissä
+vain alkuperäisellä aineistoversiolla. JJ-aineisto tarvitsee uuden OpenAI-analyysin.
+
+
+## Aineistolähtöinen ideointi (22.9.2026)
+
+Promptiversio productization-4 ei oleta toimialaa tai suosi tiettyä palvelutyyppiä.
+Sisältöviiveen erikoismittari on korvattu kaikkien aineistossa annettujen aiheiden
+yhteenvedolla: havaintojen, erillisten projektien, erillisten asiakkaiden ja yleisten
+muistiinpanojen määrät. Aiheet eivät ole mallin löytämiä eivätkä määrät osoita kysyntää.
+
+Asiakasnäkymä näyttää asiakkaan tavoitteen. Muut lähdekentät, myös mahdollinen
+sisältöosaaminen, ovat yhä lähdeikkunassa ja mallin aineistossa. Sisällöntuotantoa
+ei kielletä, jos aineisto todella tukee sitä; se ei enää ole ohjelman ennakko-oletus.
+Sisäinen kehityshavainto ei itsessään osoita ulkoista asiakaskysyntää.
+
+Käynnistä backend uudelleen ja päivitä selain. Luo uusi analyysi: vanhat analyysit,
+palvelukortit, Odoo-tuotteet ja alkuperäisen aineiston merkitty esimerkkivastaus eivät
+muutu. Tietokantamigraatiota tai uutta seed-ajoa ei tarvita.
+Rajapinnan facts.content_delay_* on korvattu facts.topics-rakenteella;
+tallennettuja vanhoja tilannekuvia ei muuteta.
+
+Varmennus: 16 automaattista testiä sekä TypeScript-tarkistus ja Vite-kooste.
+Uuden promptin sisällöllistä laatua ei ole tässä muutoksessa arvioitu oikealla
+malliajolla. Ihmisen tarkistus tarvitaan edelleen.

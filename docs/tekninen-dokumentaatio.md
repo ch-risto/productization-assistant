@@ -72,7 +72,7 @@ Havaintojen lainaukset tarkistetaan alkuperäisistä synteettisistä projektimui
 
 Promptiversio `productization-2` erottaa ohjeet aineistosta, kieltää keksityt hinnat ja kannattavuusväitteet sekä täsmentää vastaesimerkkien ja tavoiteasiakkaan eroa. Varsinaista semanttista faktantarkistajaa ei ole. Malli voi yhä liioitella näyttöä tai ehdottaa nykyisen palvelun kaltaista tuotetta.
 
-Ennen ideointia vaaditaan informatiivisia havaintoja vähintään kahdesta eri projektista; `insufficient_data`-aiheiset havainnot eivät täytä rajaa. Tämä on demon deterministinen varmistus, ei tilastollinen luottamusraja. Tyhjä tai liian vähäinen aineisto hylätään ennen maksullista kutsua. Virheellinen mallivastaus ei korvaudu automaattisesti esimerkkivastauksella.
+Ennen ideointia vaaditaan informatiivisia havaintoja vähintään kahdesta eri projektista tai yleisestä muistiinpanosta; `insufficient_data`-aiheiset havainnot eivät täytä rajaa. Tämä on demon deterministinen varmistus, ei tilastollinen luottamusraja. Tyhjä tai liian vähäinen aineisto hylätään ennen maksullista kutsua. Virheellinen mallivastaus ei korvaudu automaattisesti esimerkkivastauksella.
 
 ## 6. Odoo-adapteri
 
@@ -198,3 +198,31 @@ Testattu backend käyttää Python 3.12.5:tä. JavaScript-riippuvuudet ovat luki
 Katso [testiraportti](evaluation.md), [malliarviointien tulokset](evaluation-results.json) ja [integraation tulos](integration-results.json). Maksuttomat testit ajetaan komennolla `python -m pytest backend/tests -q`. `scripts/evaluate.py` tekee maksullisia mallikutsuja, lukuun ottamatta ennalta estettyä vähäisen aineiston tapausta.
 
 Seuraavat kehityskohteet ovat semanttisen lähdeuskollisuuden arviointi, aidon datan luvat ja minimointi, Enterprise-kenttäkartoitus, valuutta/verot, kirjautuminen, tietokantamigraatiot, muuttumaton audit trail, sivutus, Odoo-puolen idempotenssi ja synkronoinnin konfliktit. Kilpailijahaku ja aineiston automaattinen tulkinta ovat erillisiä tulevia ominaisuuksia.
+
+
+## Aineistopäivitys 22.9.2026
+
+Käytössä on JJ-dataset2.json. Yllä olevat alkuperäisen demon lukumäärät ja testitulokset kuvaavat aiempaa aineistoa. Uuden aineiston määrät, vaihto ja yleisten muistiinpanojen käsittely on kuvattu [README-ohjeessa](../README.md#aineiston-vaihto-2292026). Promptiversio on nyt productization-3.
+
+
+## Aineistolähtöinen ideointi (22.9.2026)
+
+Promptiversio productization-4 ei oleta toimialaa tai suosi tiettyä palvelutyyppiä.
+Sisältöviiveen erikoismittari on korvattu kaikkien aineistossa annettujen aiheiden
+yhteenvedolla: havaintojen, erillisten projektien, erillisten asiakkaiden ja yleisten
+muistiinpanojen määrät. Aiheet eivät ole mallin löytämiä eivätkä määrät osoita kysyntää.
+
+Asiakasnäkymä näyttää asiakkaan tavoitteen. Muut lähdekentät, myös mahdollinen
+sisältöosaaminen, ovat yhä lähdeikkunassa ja mallin aineistossa. Sisällöntuotantoa
+ei kielletä, jos aineisto todella tukee sitä; se ei enää ole ohjelman ennakko-oletus.
+Sisäinen kehityshavainto ei itsessään osoita ulkoista asiakaskysyntää.
+
+Käynnistä backend uudelleen ja päivitä selain. Luo uusi analyysi: vanhat analyysit,
+palvelukortit, Odoo-tuotteet ja alkuperäisen aineiston merkitty esimerkkivastaus eivät
+muutu. Tietokantamigraatiota tai uutta seed-ajoa ei tarvita.
+Rajapinnan facts.content_delay_* on korvattu facts.topics-rakenteella;
+tallennettuja vanhoja tilannekuvia ei muuteta.
+
+Varmennus: 16 automaattista testiä sekä TypeScript-tarkistus ja Vite-kooste.
+Uuden promptin sisällöllistä laatua ei ole tässä muutoksessa arvioitu oikealla
+malliajolla. Ihmisen tarkistus tarvitaan edelleen.

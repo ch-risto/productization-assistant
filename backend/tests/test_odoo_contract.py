@@ -6,6 +6,7 @@ import seed
 
 
 def test_seed_odoo_twice_keeps_same_records(tmp_path, monkeypatch):
+    monkeypatch.setenv('DATASET_PATH', 'demo-data/dataset.json')
     monkeypatch.setenv('APP_DATABASE_URL', 'sqlite:///' + str(tmp_path / 'seed.db'))
     class FakeOdoo:
         target = 'test-local-odoo'

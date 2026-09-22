@@ -1,0 +1,348 @@
+{
+  "version": "2026-09-22.2",
+  "synthetic": true,
+  "services": [
+    {
+      "source_id": "SVC-001",
+      "name": "Verkkosivuratkaisu ja määrittely",
+      "description": "Kokonaisvaltainen verkkosivuratkaisu, joka alkaa erikseen myytävällä asiantuntijatason määrittelyprojektilla.",
+      "deliverables": "Määrittelydokumentti, verkkosivusto, teeman asennus ja julkaisu.",
+      "exclusions": "Laajat integraatiot kolmansiin osapuoliin",
+      "price": 3500,
+      "currency": "EUR",
+      "tax_basis": "veroton",
+      "pricing_model": "alkaen, kertahinta",
+      "origin": "Tuotteistus-dokumentaatio"
+    },
+    {
+      "source_id": "SVC-002",
+      "name": "Palvelinpaketti ja ylläpitosopimus",
+      "description": "Turvallinen nimipalvelu ja verkkopalvelun tekninen ylläpito skaalautuvilla tasoilla.",
+      "deliverables": "Palvelintila, päivitykset, automaattiset varmuuskopiot.",
+      "exclusions": "Uusien ominaisuuksien kehitys",
+      "price": 150,
+      "currency": "EUR",
+      "tax_basis": "veroton",
+      "pricing_model": "kuukausihinta",
+      "origin": "Tuotteistus-dokumentaatio"
+    },
+    {
+      "source_id": "SVC-003",
+      "name": "Tekoälyoptimointi",
+      "description": "Kattava kartoitus ja toimenpide-ehdotukset sivuston tekoälyoptimointiin.",
+      "deliverables": "Kartoitusraportti, perehdytys ja optimointitoimenpiteet.",
+      "exclusions": null,
+      "price": 850,
+      "currency": "EUR",
+      "tax_basis": "veroton",
+      "pricing_model": "kertahinta",
+      "origin": "Tuotteistusajatuksia"
+    },
+    {
+      "source_id": "SVC-004",
+      "name": "Tietoturva- ja saavutettavuustarkistus",
+      "description": "WCAG 2.1 -yhteensopivuuden auditointi, 2FA, käyttäjien hallinta ja tietosuojatarkistus.",
+      "deliverables": "Auditointiraportti ja korjausehdotukset.",
+      "exclusions": "Korjausten tekninen koodaus (laskutetaan erikseen)",
+      "price": 1200,
+      "currency": "EUR",
+      "tax_basis": "veroton",
+      "pricing_model": "kertahinta",
+      "origin": "Tuotteistusajatuksia"
+    },
+    {
+      "source_id": "SVC-005",
+      "name": "Suorituskyvyn optimointipaketti",
+      "description": "Sivuston latausnopeuden ja teknisen suorituskyvyn parantaminen.",
+      "deliverables": "Välimuistin konfigurointi, kuvien ja tietokannan optimointi, CDN-integraatio.",
+      "exclusions": null,
+      "price": 600,
+      "currency": "EUR",
+      "tax_basis": "veroton",
+      "pricing_model": "kertahinta",
+      "origin": "Tuotteistusajatuksia"
+    },
+    {
+      "source_id": "SVC-006",
+      "name": "Oppimisalusta (SaaS)",
+      "description": "Yrityksille ja oppilaitoksille suunnattu tuotteistettu oppimisalusta.",
+      "deliverables": "Oppimisympäristön pystytys, SSO-kirjautuminen, roolien konfigurointi.",
+      "exclusions": "Kurssisisältöjen tuotanto",
+      "price": 490,
+      "currency": "EUR",
+      "tax_basis": "veroton",
+      "pricing_model": "kuukausihinta",
+      "origin": "Omat muistiinpanot"
+    },
+    {
+      "source_id": "SVC-007",
+      "name": "Sähköpostijärjestelmän pystytys",
+      "description": "Yrityksen sähköpostijärjestelmän tuotteistettu asennus ja siirto.",
+      "deliverables": "Tilit, nimipalvelumääritykset (SPF, DKIM, DMARC), tiedonsiirto.",
+      "exclusions": "Päätelaitteiden fyysinen asennus",
+      "price": 450,
+      "currency": "EUR",
+      "tax_basis": "veroton",
+      "pricing_model": "kertahinta",
+      "origin": "Omat muistiinpanot"
+    }
+  ],
+  "customers": [
+    {
+      "source_id": "CUS-001",
+      "name": "Mainostoimisto Kumppani (demo)",
+      "segment": "Mainostoimisto",
+      "size": "Yli 15 työntekijää",
+      "goal": "Luotettavuutta, nopeutta ja teknistä tukea asiakkailleen",
+      "content_skills": "Ammattimainen ostaja, tuottaa itse sisällöt",
+      "service_ids": [
+        "SVC-002",
+        "SVC-005"
+      ]
+    },
+    {
+      "source_id": "CUS-002",
+      "name": "Paikallinen LVI-yritys (demo)",
+      "segment": "Pieni paikallinen yritys",
+      "size": "1-5 työntekijää",
+      "goal": "Avaimet käteen -ratkaisu, mielenrauha",
+      "content_skills": "Yrittäjä tekee kaiken itse, vähän aikaa verkkosivuille",
+      "service_ids": [
+        "SVC-001",
+        "SVC-002",
+        "SVC-007"
+      ]
+    },
+    {
+      "source_id": "CUS-003",
+      "name": "Julkishallinnon Toimija (demo)",
+      "segment": "Kunta/Julkinen sektori",
+      "size": "Yli 50 työntekijää",
+      "goal": "Tietoturva, vakaus ja saavutettavuusvaatimusten täyttäminen",
+      "content_skills": "Tarkat lakisääteiset ja sisällölliset vaatimukset",
+      "service_ids": [
+        "SVC-002",
+        "SVC-004"
+      ]
+    },
+    {
+      "source_id": "CUS-004",
+      "name": "Keskisuuri Tehdas Oy (demo)",
+      "segment": "Keskisuuri PK-yritys",
+      "size": "15-50 työntekijää",
+      "goal": "Räätälöidyt ratkaisut, skaalautuvuus ja integraatiot",
+      "content_skills": "Talossa nimetty IT-vastaava",
+      "service_ids": [
+        "SVC-001",
+        "SVC-003"
+      ]
+    },
+    {
+      "source_id": "CUS-005",
+      "name": "Keski-Suomen Opisto (demo)",
+      "segment": "Oppilaitokset",
+      "size": "Yli 50 työntekijää",
+      "goal": "Skaalautuva ja luotettava oppimisalusta opiskelijoille",
+      "content_skills": "Tuottaa pedagogisen sisällön itse",
+      "service_ids": [
+        "SVC-006",
+        "SVC-004"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "source_id": "PRJ-001",
+      "name": "Avaimet käteen -verkkosivut",
+      "customer_id": "CUS-002",
+      "service_id": "SVC-001",
+      "goal": "Verkkosivujen nopean julkaisun toteutus",
+      "planned_hours": 30,
+      "actual_hours": 35,
+      "notes": "Yrittäjällä ei ollut aikaa sisältöihin, mikä vaati odottelua.",
+      "origin": "Synteettinen skenaario"
+    },
+    {
+      "source_id": "PRJ-002",
+      "name": "Saavutettavuusprojekti",
+      "customer_id": "CUS-003",
+      "service_id": "SVC-004",
+      "goal": "WCAG 2.1 yhteensopivuuden saavuttaminen",
+      "planned_hours": 20,
+      "actual_hours": 20,
+      "notes": "Toimitettiin aikataulussa, auditointi meni läpi ilman huomautuksia.",
+      "origin": "Synteettinen skenaario"
+    },
+    {
+      "source_id": "PRJ-003",
+      "name": "Verkkokaupan CDN ja välimuisti",
+      "customer_id": "CUS-001",
+      "service_id": "SVC-005",
+      "goal": "Latausaikojen minimointi ja kuvien optimointi",
+      "planned_hours": 10,
+      "actual_hours": 12,
+      "notes": "Tietokannan optimointi paljasti vanhaa dataa, jonka siivous kesti odotettua kauemmin.",
+      "origin": "Synteettinen skenaario"
+    },
+    {
+      "source_id": "PRJ-004",
+      "name": "Oppimisalustan SSO-integraatio",
+      "customer_id": "CUS-005",
+      "service_id": "SVC-006",
+      "goal": "Kertakirjautumisen käyttöönotto",
+      "planned_hours": 25,
+      "actual_hours": 32,
+      "notes": "Haka-konfiguraatioiden testaus kehityspalvelimella viivästyi asiakkaan tunnuksien vuoksi.",
+      "origin": "Synteettinen skenaario"
+    }
+  ],
+  "observations": [
+    {
+      "source_id": "OBS-001",
+      "project_id": null,
+      "topic": "sales_bottleneck",
+      "quote": "Myynnin henkilöityminen vaikeuttaa myyntiä. Tarvitaan läpinäkyvyyttä ja yhteinen näkymä asiakasrajapintaan.",
+      "origin": "Kokousmuistio-havainto"
+    },
+    {
+      "source_id": "OBS-002",
+      "project_id": null,
+      "topic": "product_definition",
+      "quote": "Mahdoton myydä, jos ei tiedetä mitä myydään. Vähän kaikkea on usein ei mitään.",
+      "origin": "Tuotteistus-havainto"
+    },
+    {
+      "source_id": "OBS-003",
+      "project_id": null,
+      "topic": "scope_creep",
+      "quote": "Yksi suurimmista haasteista palveluprojekteissa on scope creep eli toimeksiannon laajuuden hallitsematon laajeneminen.",
+      "origin": "Strateginen havainto"
+    },
+    {
+      "source_id": "OBS-004",
+      "project_id": null,
+      "topic": "knowledge_transfer",
+      "quote": "Tuotteistus tarkoittaa tässä tapauksessa sitä, että saadaan tuotteet ulos asiantuntijan päästä.",
+      "origin": "Kokousmuistio-havainto"
+    },
+    {
+      "source_id": "OBS-005",
+      "project_id": null,
+      "topic": "automation",
+      "quote": "Tuote voidaan konfiguroida luomaan automaattisesti projekti ja tehtävä myyntitilauksen vahvistuksen yhteydessä.",
+      "origin": "Odoo-strategia"
+    },
+    {
+      "source_id": "OBS-006",
+      "project_id": null,
+      "topic": "unbilled_work",
+      "quote": "Laskuttamaton työ näkyväksi -> saadaan laskettua mukaan hintaan.",
+      "origin": "Omat muistiinpanot"
+    },
+    {
+      "source_id": "OBS-007",
+      "project_id": null,
+      "topic": "financial_stability",
+      "quote": "Tuotteistaminen puuttuu haasteeseen: epäsäännölliseen ja ennustamattomaan 'juhla tai nälkä' -sykliin.",
+      "origin": "Odoo-strategia"
+    },
+    {
+      "source_id": "OBS-008",
+      "project_id": null,
+      "topic": "marketing_focus",
+      "quote": "Jokaiselle jotain on ei mitään kellekään.",
+      "origin": "Tuotteistusajatuksia"
+    }
+  ],
+  "opportunities": [
+    {
+      "source_id": "OPP-001",
+      "name": "Jatkuva ylläpitosopimus",
+      "customer_id": "CUS-001",
+      "status": "won",
+      "reason": "Selkeästi paketoitu palvelin- ja ylläpitoratkaisu teki ostamisesta mainostoimistolle helppoa.",
+      "origin": "Synteettinen myyntihavainto"
+    },
+    {
+      "source_id": "OPP-002",
+      "name": "Sivuston AI-optimointi",
+      "customer_id": "CUS-004",
+      "status": "open",
+      "reason": "Asiakas kaipaa tekoälyoptimointia nykyiseen järjestelmäänsä.",
+      "origin": "Synteettinen myyntihavainto"
+    },
+    {
+      "source_id": "OPP-003",
+      "name": "Oppimisalustan lisämyynti",
+      "customer_id": "CUS-005",
+      "status": "won",
+      "reason": "Olemassaolevalta asiakkaalta on helpompi saada lisämyyntiä asiantuntijapalveluiden kautta.",
+      "origin": "Synteettinen myyntihavainto"
+    },
+    {
+      "source_id": "OPP-004",
+      "name": "Määrittelyprojekti",
+      "customer_id": "CUS-003",
+      "status": "open",
+      "reason": "Julkishallinnon asiakas tarvitsee tarkan määrittelyn ennen julkista kilpailutusta.",
+      "origin": "Synteettinen myyntihavainto"
+    }
+  ],
+  "target_profile": "Monipuolinen asiakaskunta, joka jaetaan selkeisiin segmentteihin: mainostoimistot, paikalliset pienyritykset, PK-yritykset, oppilaitokset ja julkishallinto. Tavoitteena tarjota toistettavia, selkeästi hinnoiteltuja modulaarisia asiantuntijapaketteja, jotka ratkaisevat kohderyhmän spesifejä ongelmia ja luovat tasaisen jatkuvan laskutuksen virran.",
+  "competitors": [
+    {
+      "source_id": "CMP-001",
+      "name": "Digitoimisto Kilpailija X",
+      "service": "Verkkosivuprojektit",
+      "scope": "Pelkät kustomoidut ratkaisut, ei valmiita tuotteistettuja paketteja",
+      "exclusions": "Jatkuva strateginen ylläpito",
+      "price": null,
+      "currency": "EUR",
+      "billing_period": "tuntihinta",
+      "starting_price": false,
+      "tax_basis": "veroton",
+      "source_url": null,
+      "origin": "Keksitty kilpailijakortti",
+      "missing": [
+        "Selkeät tuotepaketit",
+        "Saavutettavuuspalvelut"
+      ]
+    },
+    {
+      "source_id": "CMP-002",
+      "name": "Hosting-palvelu Y",
+      "service": "Palvelinpaketit",
+      "scope": "Vain palvelintila, ei sovellustason ylläpitoa tai tukea",
+      "exclusions": "Ei sivustotukea tai kehitystä",
+      "price": 49,
+      "currency": "EUR",
+      "billing_period": "kuukausihinta",
+      "starting_price": true,
+      "tax_basis": "veroton",
+      "source_url": null,
+      "origin": "Keksitty kilpailijakortti",
+      "missing": [
+        "Henkilökohtainen tuki",
+        "Tietoturvatarkistukset"
+      ]
+    },
+    {
+      "source_id": "CMP-003",
+      "name": "SaaS LMS-toimija Z",
+      "service": "Oppimisalustat",
+      "scope": "Kansainvälinen SaaS-tuote massamarkkinoille",
+      "exclusions": "Lähituki ja vahva asiakaskohtainen kustomointi",
+      "price": 299,
+      "currency": "EUR",
+      "billing_period": "kuukausihinta",
+      "starting_price": true,
+      "tax_basis": "veroton",
+      "source_url": null,
+      "origin": "Keksitty kilpailijakortti",
+      "missing": [
+        "Kotimainen SSO (esim. Haka)",
+        "Täysin räätälöitävä ulkoasu"
+      ]
+    }
+  ]
+}

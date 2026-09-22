@@ -65,7 +65,7 @@ Saat 2–3 ideaa. Tarkista jokaisesta:
 
 Klikkaa lähdetunnisteita nähdäksesi aineiston. Valitse sopiva idea painamalla **Muotoile palvelukortti**. Tämä tekee erillisen mallikutsun. Analyysihistoriasta voit avata aikaisemman ajon ilman uutta analyysikutsua.
 
-Jos havaintoja on alle kahdesta riittävän dokumentoidusta projektista, ideointi estetään. Raja on tämän demon käytännön varmistus, ei tilastollinen näyttö riittävästä otoksesta.
+Jos informatiivisia havaintoja on alle kahdesta eri projektista tai yleisestä muistiinpanosta, ideointi estetään. Raja on tämän demon käytännön varmistus, ei tilastollinen näyttö riittävästä otoksesta.
 
 **Ilman mallipalvelua:** valitse **Avaa tallennettu esimerkkivastaus**. Se harjoittaa samaa käyttöpolkua, mutta ei analysoi muuttunutta tavoiteasiakasta uutena malliajona.
 
@@ -113,3 +113,31 @@ Saman version vienti uudelleen palauttaa saman tuotteen. Viety kortti lukittuu. 
 Demo toimii paikallisesti ja yhdelle käyttäjälle. Siinä ei ole yrityksen tuotantoyhteyttä, automaattista kilpailijatiedon keruuta, oikeaa asiakasprofilointia, taattua faktantarkistusta tai kannattavuusmallia. Testattu Community-ympäristö ei varmista työnantajan Enterprise-räätälöintien yhteensopivuutta.
 
 Tekniset varmennukset ja jäljellä olevat laatuhavainnot ovat [testiraportissa](evaluation.md). Kehittäjän kuvaus on [teknisessä dokumentaatiossa](tekninen-dokumentaatio.md).
+
+
+## Aineistopäivitys 22.9.2026
+
+Käytössä on JJ-dataset2.json. Yllä olevat alkuperäisen demon lukumäärät ja testitulokset kuvaavat aiempaa aineistoa. Uuden aineiston määrät, vaihto ja yleisten muistiinpanojen käsittely on kuvattu [README-ohjeessa](../README.md#aineiston-vaihto-2292026). Promptiversio on nyt productization-3.
+
+
+## Aineistolähtöinen ideointi (22.9.2026)
+
+Promptiversio productization-4 ei oleta toimialaa tai suosi tiettyä palvelutyyppiä.
+Sisältöviiveen erikoismittari on korvattu kaikkien aineistossa annettujen aiheiden
+yhteenvedolla: havaintojen, erillisten projektien, erillisten asiakkaiden ja yleisten
+muistiinpanojen määrät. Aiheet eivät ole mallin löytämiä eivätkä määrät osoita kysyntää.
+
+Asiakasnäkymä näyttää asiakkaan tavoitteen. Muut lähdekentät, myös mahdollinen
+sisältöosaaminen, ovat yhä lähdeikkunassa ja mallin aineistossa. Sisällöntuotantoa
+ei kielletä, jos aineisto todella tukee sitä; se ei enää ole ohjelman ennakko-oletus.
+Sisäinen kehityshavainto ei itsessään osoita ulkoista asiakaskysyntää.
+
+Käynnistä backend uudelleen ja päivitä selain. Luo uusi analyysi: vanhat analyysit,
+palvelukortit, Odoo-tuotteet ja alkuperäisen aineiston merkitty esimerkkivastaus eivät
+muutu. Tietokantamigraatiota tai uutta seed-ajoa ei tarvita.
+Rajapinnan facts.content_delay_* on korvattu facts.topics-rakenteella;
+tallennettuja vanhoja tilannekuvia ei muuteta.
+
+Varmennus: 16 automaattista testiä sekä TypeScript-tarkistus ja Vite-kooste.
+Uuden promptin sisällöllistä laatua ei ole tässä muutoksessa arvioitu oikealla
+malliajolla. Ihmisen tarkistus tarvitaan edelleen.

@@ -18,6 +18,7 @@ import seed
 def isolated(tmp_path, monkeypatch):
     monkeypatch.setenv('APP_DATABASE_URL', 'sqlite:///' + str(tmp_path / 'test.db'))
     monkeypatch.setenv('ODOO_MODE', 'fixture')
+    monkeypatch.setenv('DATASET_PATH', 'demo-data/dataset.json')
     monkeypatch.delenv('LLM_API_KEY', raising=False)
     store.init()
 
@@ -47,7 +48,7 @@ def test_seed_twice_and_evidence():
     value = data.fixture()
     facts = data.facts(value)
     assert (facts['project_count'], facts['customer_count']) == (8, 6)
-    assert (facts['content_delay_projects'], facts['content_delay_customers']) == (4, 3)
+    assert (facts['topics']['content_delay']['projects'], facts['topics']['content_delay']['customers']) == (4, 3)
     assert value['competitors'][1]['price'] is None
 
 
@@ -174,4 +175,35 @@ def test_api_origin_and_validation():
         assert client.get('/api/health').status_code == 200
         assert client.post('/api/runs', json={'mode':'example'}, headers={'origin':'https://evil.example'}).status_code == 403
         assert client.post('/api/runs', json={'mode':'unknown'}).status_code == 422
-        assert client.get('/api/data').json()['facts']['content_delay_customers'] == 3
+        assert client.get('/api/data').json()['facts']['topics']['content_delay']['customers'] == 3
+
+def test_general_notes_dataset(monkeypatch):
+    monkeypatch.setenv('DATASET_PATH', 'demo-data/JJ-dataset2.json')
+    value = data.fixture()
+    assert len(value['projects']) == 4
+    assert data.facts(value)['general_note_count'] == 8
+    assert 'content_delay' not in data.facts(value)['topics']
+    assert all(o['evidence_kind'] == 'general_note' for o in value['observations'])
+    seed.seed_local(update_profile=True)
+    with store.db() as c:
+        assert c.execute("SELECT value FROM settings WHERE key='target_profile'").fetchone()[0] == value['target_profile']
+    with pytest.raises(ValueError, match='alkuperäiseen'):
+        llm.analyze(value, 'example')
+
+
+def test_arbitrary_topics_count_unique_projects_and_customers():
+    value = data.fixture()
+    value['observations'] = [
+        {'source_id': 'X1', 'topic': 'equipment_repair', 'project_id': 'PRJ-001'},
+        {'source_id': 'X2', 'topic': 'equipment_repair', 'project_id': 'PRJ-001'},
+        {'source_id': 'X3', 'topic': 'equipment_repair', 'project_id': None},
+        {'source_id': 'X4', 'topic': 'training', 'project_id': None},
+    ]
+    result = data.facts(value)
+    assert result['topics']['equipment_repair'] == {
+        'observations': 3, 'projects': 1, 'customers': 1, 'general_notes': 1}
+    assert result['topics']['training']['projects'] == 0
+    assert result['observation_count'] == 4
+    assert 'content_delay' not in result['topics']
+    value['observations'] = []
+    assert data.facts(value)['topics'] == {}

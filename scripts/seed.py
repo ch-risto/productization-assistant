@@ -13,16 +13,17 @@ from app.data import fixture
 from app.odoo import OdooAdapter
 
 
-def seed_local():
+def seed_local(update_profile=False):
     value=fixture()
     store.init()
     with store.db(write=True) as c:
-        c.execute('INSERT OR IGNORE INTO settings VALUES(?,?)',('target_profile',value['target_profile']))
+        statement = 'INSERT OR REPLACE' if update_profile else 'INSERT OR IGNORE'
+        c.execute(statement + ' INTO settings VALUES(?,?)',('target_profile',value['target_profile']))
     return value
 
 
-def seed_odoo():
-    value=seed_local()
+def seed_odoo(update_profile=False):
+    value=seed_local(update_profile)
     source=OdooAdapter()
     source.connect()
     def upsert(source_id,model,values,domain):
@@ -68,10 +69,11 @@ def seed_odoo():
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
     parser.add_argument('--odoo',action='store_true')
+    parser.add_argument('--update-profile', action='store_true', help='Korvaa tallennettu tavoiteasiakas aineiston profiililla')
     args=parser.parse_args()
     if args.odoo:
-        seed_odoo()
+        seed_odoo(args.update_profile)
     else:
-        seed_local()
+        seed_local(args.update_profile)
         print('Paikallinen aineisto validoitu. Odoohon ei kirjoitettu.')
 
