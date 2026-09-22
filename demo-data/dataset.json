@@ -1,0 +1,345 @@
+{
+  "version": "2026-09-20.1",
+  "synthetic": true,
+  "services": [
+    {
+      "source_id": "SVC-001",
+      "name": "Yritysverkkosivusto",
+      "description": "Viiden sivun verkkosivusto. Sisällöistä sovitaan myöhemmin.",
+      "deliverables": "Viiden sivun verkkosivusto. Sisällöistä sovitaan myöhemmin.",
+      "exclusions": null,
+      "price": 4200,
+      "currency": "EUR",
+      "tax_basis": "veroton",
+      "pricing_model": "kertahinta",
+      "origin": "Synteettinen aineisto"
+    },
+    {
+      "source_id": "SVC-002",
+      "name": "Verkkosivujen uudistus",
+      "description": "Nykyisen sivuston visuaalinen ja tekninen uudistus. Rajauksia tarkennetaan.",
+      "deliverables": "Nykyisen sivuston visuaalinen ja tekninen uudistus. Rajauksia tarkennetaan.",
+      "exclusions": null,
+      "price": 5600,
+      "currency": "EUR",
+      "tax_basis": "veroton",
+      "pricing_model": "alkaen, kertahinta",
+      "origin": "Synteettinen aineisto"
+    },
+    {
+      "source_id": "SVC-003",
+      "name": "Verkkosivujen ylläpito",
+      "description": "Päivitykset ja varmuuskopiointi. Tekninen ylläpito.",
+      "deliverables": "Päivitykset ja varmuuskopiointi. Tekninen ylläpito.",
+      "exclusions": null,
+      "price": 120,
+      "currency": "EUR",
+      "tax_basis": "veroton",
+      "pricing_model": "kuukausihinta",
+      "origin": "Synteettinen aineisto"
+    },
+    {
+      "source_id": "SVC-004",
+      "name": "Verkkosivujen kehitystyö",
+      "description": "Kehitämme sivustoasi tarpeen mukaan. Käyttökohteita ei rajattu.",
+      "deliverables": "Kehitämme sivustoasi tarpeen mukaan. Käyttökohteita ei rajattu.",
+      "exclusions": null,
+      "price": 95,
+      "currency": "EUR",
+      "tax_basis": "veroton",
+      "pricing_model": "tuntihinta",
+      "origin": "Synteettinen aineisto"
+    }
+  ],
+  "customers": [
+    {
+      "source_id": "CUS-001",
+      "name": "Luoto Neuvonta (demo)",
+      "segment": "Asiantuntijayritys",
+      "size": "2–15 työntekijää",
+      "goal": "Selkeä palvelutarjonta ja yhteydenotot",
+      "content_skills": "Vähän kirjoittamiseen varattua aikaa",
+      "service_ids": [
+        "SVC-001",
+        "SVC-002"
+      ]
+    },
+    {
+      "source_id": "CUS-002",
+      "name": "Kajo Konsultit (demo)",
+      "segment": "Asiantuntijayritys",
+      "size": "2–15 työntekijää",
+      "goal": "Selkeä palvelutarjonta ja yhteydenotot",
+      "content_skills": "Nimetty viestintävastaava",
+      "service_ids": [
+        "SVC-001"
+      ]
+    },
+    {
+      "source_id": "CUS-003",
+      "name": "Koivu Palvelut (demo)",
+      "segment": "Paikallinen palveluyritys",
+      "size": "2–15 työntekijää",
+      "goal": "Selkeä palvelutarjonta ja yhteydenotot",
+      "content_skills": "Yrittäjä tuottaa sisällöt muun työn ohessa",
+      "service_ids": [
+        "SVC-001"
+      ]
+    },
+    {
+      "source_id": "CUS-004",
+      "name": "Säde Huolto (demo)",
+      "segment": "Paikallinen palveluyritys",
+      "size": "2–15 työntekijää",
+      "goal": "Selkeä palvelutarjonta ja yhteydenotot",
+      "content_skills": "Valmiit hyväksytyt tekstit",
+      "service_ids": [
+        "SVC-002"
+      ]
+    },
+    {
+      "source_id": "CUS-005",
+      "name": "Puro Kauppa (demo)",
+      "segment": "Verkkokauppa",
+      "size": "2–15 työntekijää",
+      "goal": "Selkeä palvelutarjonta ja yhteydenotot",
+      "content_skills": "Tuotetietoa paljon, verkkotekstien prosessi puuttuu",
+      "service_ids": [
+        "SVC-001",
+        "SVC-002"
+      ]
+    },
+    {
+      "source_id": "CUS-006",
+      "name": "Usva Design (demo)",
+      "segment": "Verkkokauppa",
+      "size": "2–15 työntekijää",
+      "goal": "Selkeä palvelutarjonta ja yhteydenotot",
+      "content_skills": "Ei vielä kartoitettu",
+      "service_ids": [
+        "SVC-002"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "source_id": "PRJ-001",
+      "name": "Verkkosivuprojekti 01",
+      "customer_id": "CUS-001",
+      "service_id": "SVC-001",
+      "goal": "Verkkosivujen julkaisu",
+      "planned_hours": 40,
+      "actual_hours": 48,
+      "notes": "Palvelutekstit puuttuivat aloituksessa. Julkaisu viivästyi kolme viikkoa asiakkaan sisältöjen vuoksi.",
+      "origin": "Synteettinen projektimuistiinpano"
+    },
+    {
+      "source_id": "PRJ-002",
+      "name": "Verkkosivuprojekti 02",
+      "customer_id": "CUS-001",
+      "service_id": "SVC-002",
+      "goal": "Verkkosivujen julkaisu",
+      "planned_hours": 40,
+      "actual_hours": 46,
+      "notes": "Asiakkaan toinen verkkosivuhanke. Referenssitekstit saapuivat kaksi viikkoa myöhässä.",
+      "origin": "Synteettinen projektimuistiinpano"
+    },
+    {
+      "source_id": "PRJ-003",
+      "name": "Verkkosivuprojekti 03",
+      "customer_id": "CUS-003",
+      "service_id": "SVC-001",
+      "goal": "Verkkosivujen julkaisu",
+      "planned_hours": 40,
+      "actual_hours": 51,
+      "notes": "Yrittäjä ei ehtinyt kirjoittaa palvelukuvauksia. Sisältöjen odottaminen siirsi julkaisua.",
+      "origin": "Synteettinen projektimuistiinpano"
+    },
+    {
+      "source_id": "PRJ-004",
+      "name": "Verkkosivuprojekti 04",
+      "customer_id": "CUS-005",
+      "service_id": "SVC-002",
+      "goal": "Verkkosivujen julkaisu",
+      "planned_hours": 40,
+      "actual_hours": 55,
+      "notes": "Tuotekategorioiden kuvaukset puuttuivat. Projekti viivästyi sisältöjen tarkistuskierroksella.",
+      "origin": "Synteettinen projektimuistiinpano"
+    },
+    {
+      "source_id": "PRJ-005",
+      "name": "Verkkosivuprojekti 05",
+      "customer_id": "CUS-002",
+      "service_id": "SVC-001",
+      "goal": "Verkkosivujen julkaisu",
+      "planned_hours": 40,
+      "actual_hours": 39,
+      "notes": "Viestintävastaava toimitti hyväksytyt sisällöt ajoissa. Sisältöapua ei tarvittu.",
+      "origin": "Synteettinen projektimuistiinpano"
+    },
+    {
+      "source_id": "PRJ-006",
+      "name": "Verkkosivuprojekti 06",
+      "customer_id": "CUS-004",
+      "service_id": "SVC-002",
+      "goal": "Verkkosivujen julkaisu",
+      "planned_hours": 40,
+      "actual_hours": 40,
+      "notes": "Asiakkaalla oli valmiit tekstit ja kuvat. Projekti julkaistiin sovittuna päivänä.",
+      "origin": "Synteettinen projektimuistiinpano"
+    },
+    {
+      "source_id": "PRJ-007",
+      "name": "Verkkosivuprojekti 07",
+      "customer_id": "CUS-005",
+      "service_id": "SVC-001",
+      "goal": "Verkkosivujen julkaisu",
+      "planned_hours": 40,
+      "actual_hours": 60,
+      "notes": "Sisällöt olivat valmiit. Varaston rajapinnan muuttuminen aiheutti teknisen viiveen.",
+      "origin": "Synteettinen projektimuistiinpano"
+    },
+    {
+      "source_id": "PRJ-008",
+      "name": "Verkkosivuprojekti 08",
+      "customer_id": "CUS-006",
+      "service_id": "SVC-002",
+      "goal": "Verkkosivujen julkaisu",
+      "planned_hours": 40,
+      "actual_hours": null,
+      "notes": "Projektista ei ole vielä saatavilla loppuyhteenvetoa.",
+      "origin": "Synteettinen projektimuistiinpano"
+    }
+  ],
+  "observations": [
+    {
+      "source_id": "OBS-001",
+      "project_id": "PRJ-001",
+      "topic": "content_delay",
+      "quote": "Palvelutekstit puuttuivat aloituksessa. Julkaisu viivästyi kolme viikkoa asiakkaan sisältöjen vuoksi.",
+      "origin": "Käsin luokiteltu synteettinen havainto"
+    },
+    {
+      "source_id": "OBS-002",
+      "project_id": "PRJ-002",
+      "topic": "content_delay",
+      "quote": "Asiakkaan toinen verkkosivuhanke. Referenssitekstit saapuivat kaksi viikkoa myöhässä.",
+      "origin": "Käsin luokiteltu synteettinen havainto"
+    },
+    {
+      "source_id": "OBS-003",
+      "project_id": "PRJ-003",
+      "topic": "content_delay",
+      "quote": "Yrittäjä ei ehtinyt kirjoittaa palvelukuvauksia. Sisältöjen odottaminen siirsi julkaisua.",
+      "origin": "Käsin luokiteltu synteettinen havainto"
+    },
+    {
+      "source_id": "OBS-004",
+      "project_id": "PRJ-004",
+      "topic": "content_delay",
+      "quote": "Tuotekategorioiden kuvaukset puuttuivat. Projekti viivästyi sisältöjen tarkistuskierroksella.",
+      "origin": "Käsin luokiteltu synteettinen havainto"
+    },
+    {
+      "source_id": "OBS-005",
+      "project_id": "PRJ-005",
+      "topic": "content_success",
+      "quote": "Viestintävastaava toimitti hyväksytyt sisällöt ajoissa. Sisältöapua ei tarvittu.",
+      "origin": "Käsin luokiteltu synteettinen havainto"
+    },
+    {
+      "source_id": "OBS-006",
+      "project_id": "PRJ-006",
+      "topic": "content_success",
+      "quote": "Asiakkaalla oli valmiit tekstit ja kuvat. Projekti julkaistiin sovittuna päivänä.",
+      "origin": "Käsin luokiteltu synteettinen havainto"
+    },
+    {
+      "source_id": "OBS-007",
+      "project_id": "PRJ-007",
+      "topic": "integration_delay",
+      "quote": "Sisällöt olivat valmiit. Varaston rajapinnan muuttuminen aiheutti teknisen viiveen.",
+      "origin": "Käsin luokiteltu synteettinen havainto"
+    },
+    {
+      "source_id": "OBS-008",
+      "project_id": "PRJ-008",
+      "topic": "insufficient_data",
+      "quote": "Projektista ei ole vielä saatavilla loppuyhteenvetoa.",
+      "origin": "Käsin luokiteltu synteettinen havainto"
+    }
+  ],
+  "opportunities": [
+    {
+      "source_id": "OPP-001",
+      "name": "Selkeä verkkosivupaketti",
+      "customer_id": "CUS-001",
+      "status": "won",
+      "reason": "Rajattu sisältö helpotti päätöstä.",
+      "origin": "Synteettinen myyntihavainto"
+    },
+    {
+      "source_id": "OPP-002",
+      "name": "Laaja sivustouudistus",
+      "customer_id": "CUS-002",
+      "status": "lost",
+      "reason": "Kokonaisbudjetti ylitti asiakkaan budjetin.",
+      "origin": "Synteettinen myyntihavainto"
+    },
+    {
+      "source_id": "OPP-003",
+      "name": "Sisältöavun tarve",
+      "customer_id": "CUS-003",
+      "status": "open",
+      "reason": "Asiakas pyysi apua palveluteksteihin.",
+      "origin": "Synteettinen myyntihavainto"
+    },
+    {
+      "source_id": "OPP-004",
+      "name": "Verkkosivutarjous",
+      "customer_id": "CUS-004",
+      "status": "lost",
+      "reason": null,
+      "origin": "Synteettinen myyntihavainto"
+    }
+  ],
+  "target_profile": "Pieni asiantuntijayritys, jolla on selkeä palvelutarjonta ja nimetty päätöksentekijä, mutta vähän aikaa verkkosivusisältöjen tuottamiseen.",
+  "competitors": [
+    {
+      "source_id": "CMP-001",
+      "name": "Kuvitteellinen Kilpailija A",
+      "service": "Sisältötyöpaja",
+      "scope": "Yksi työpaja ja sisältörunko",
+      "exclusions": "Valmiit tekstit eivät sisälly",
+      "price": 750,
+      "currency": "EUR",
+      "billing_period": "kertahinta",
+      "starting_price": true,
+      "tax_basis": "veroton",
+      "source_url": null,
+      "origin": "Keksitty kilpailijakortti",
+      "missing": [
+        "Työpajan kesto"
+      ]
+    },
+    {
+      "source_id": "CMP-002",
+      "name": "Kuvitteellinen Kilpailija B",
+      "service": "Sisältöpalvelu",
+      "scope": "Tekstien kirjoitus ja kommentointikierros",
+      "exclusions": "Sivumäärä ei tiedossa",
+      "price": null,
+      "currency": "EUR",
+      "billing_period": null,
+      "starting_price": false,
+      "tax_basis": null,
+      "source_url": null,
+      "origin": "Keksitty kilpailijakortti",
+      "missing": [
+        "Hinta",
+        "Sivumäärä",
+        "Laskutusperuste"
+      ]
+    }
+  ]
+}

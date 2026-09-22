@@ -1,0 +1,652 @@
+[
+  {
+    "case": "normal",
+    "status": "schema_and_sources_valid",
+    "result": {
+      "ideas": [
+        {
+          "id": "IDEA-001",
+          "title": "Sisältövalmiiden pienten asiantuntijayritysten verkkosivupaketti",
+          "target_customer": "Pienet asiantuntijayritykset, joilla on selkeä palvelutarjonta ja nimetty viestintävastaava, joka toimittaa valmiit verkkosisällöt",
+          "problem": "Sisältöjen puuttuminen tai myöhästyminen viivästyttää verkkosivuprojekteja, mutta asiakkailla, joilla on valmiit ja hyväksytyt sisällöt, projektit sujuvat mainiosti",
+          "proposed_service": "Tarjotaan rajattu verkkosivupaketti viiden sivun kokonaisuudella, jossa sisältöjen toimittaminen asiakkaan vastuulla ja nopea toimitusaika varmistetaan",
+          "supporting_source_ids": [
+            "OBS-005",
+            "OBS-006",
+            "OPP-001",
+            "PRJ-005",
+            "PRJ-006"
+          ],
+          "counterevidence_source_ids": [
+            "OBS-001",
+            "OBS-002",
+            "OBS-003",
+            "OBS-004"
+          ],
+          "assumptions": [
+            "Asiantuntijayrityksillä on nimetty vastuuhenkilö, joka kykenee toimittamaan sisältöä riittävän ajallaan",
+            "Rajattu sisältöpaketti auttaa asiakkaita tekemään päätöksen nopeammin"
+          ],
+          "open_questions": [
+            "Miten palveluun voidaan lisätä tuki asiakkaille, joilla ei ole valmiita sisältöjä?",
+            "Kuinka palvelua hinnoitellaan suhteessa sisältöapua tarjoaviin kilpailijoihin?"
+          ],
+          "target_profile_fit": "Hyvin sopiva pienille asiantuntijayrityksille, joilla selkeä palvelutarjonta ja nimetty viestintävastaava"
+        },
+        {
+          "id": "IDEA-002",
+          "title": "Sisältöavun lisäpalvelu verkkosivuprojekteihin paikallisille palveluyrityksille",
+          "target_customer": "Paikalliset pienet palveluyritykset, joissa yrittäjä tuottaa sisällöt muun työn ohessa, mutta kokee sisältöjen tuottamisen haastavaksi",
+          "problem": "Sisältöjen puuttuminen ja viivästymiset hidastavat verkkosivuprojektien etenemistä, ja asiakkaat tarvitsevat apua palvelutekstien laatimiseen",
+          "proposed_service": "Tarjotaan sisältötyöpajoja ja kirjoitusapua, jossa tehdään yhdessä palvelutekstit ja muut verkkosisällöt valmiiksi projektin alussa, helpottaen näin sisällöntuotantoa asiakkaalta",
+          "supporting_source_ids": [
+            "OBS-001",
+            "OBS-003",
+            "OPP-003",
+            "PRJ-003"
+          ],
+          "counterevidence_source_ids": [
+            "OBS-005"
+          ],
+          "assumptions": [
+            "Yrittäjät hyötyvät ohjatusta ja tukevasta sisältöprosessista",
+            "Sisältöapua tarjoamalla projektien läpimeno nopeutuu ja asiakastyytyväisyys kasvaa"
+          ],
+          "open_questions": [
+            "Kuinka paljon asiakkaat ovat valmiita investoimaan sisältöapuun?",
+            "Miten työpajat ja kirjoitusapu integroidaan osaksi verkkosivuprojektia?"
+          ],
+          "target_profile_fit": "Sopii paikallisille pienille palveluyrityksille, joilla vähän aikaa ja resursseja sisällöntuotantoon"
+        },
+        {
+          "id": "IDEA-003",
+          "title": "Laaja verkkosivuston uudistusprojekti nimetyille sisältövastaaville",
+          "target_customer": "Pienet asiantuntijayritykset, joilla on nimetty sisältövastaava ja tarve kokonaisvaltaiselle visuaaliselle ja tekniselle uudistukselle",
+          "problem": "Asiakkaat kokevat laajat sivustouudistukset kalliiksi ja budjettirajoitteet voivat estää kaupan syntymisen",
+          "proposed_service": "Tarjotaan laaja verkkosivujen uudistus, jossa huomioidaan myös asiakkaan valmiit sisällöt ja sisältövastaavan rooli projektin sujuvuuden takaamiseksi, sekä budjettiin porrastettu palvelukokonaisuus",
+          "supporting_source_ids": [
+            "OPP-002",
+            "PRJ-002",
+            "OBS-002"
+          ],
+          "counterevidence_source_ids": [
+            "OPP-001",
+            "OBS-005"
+          ],
+          "assumptions": [
+            "Nimetty sisältövastaava parantaa projektin aikataulussa pysymistä",
+            "Harkittu hinnoittelu auttaa vastaamaan budjettirajoitteisiin"
+          ],
+          "open_questions": [
+            "Miten palvelu jaetaan eri hintaluokkiin ja vaiheisiin?",
+            "Kuinka voidaan varmistaa sisältöjen saapuminen ajallaan isommissa kokonaisuuksissa?"
+          ],
+          "target_profile_fit": "Sopii nimetyillä sisältövastaavilla varustetuille asiantuntijayrityksille, joilla tilaus koostuu laajasta uudistuksesta"
+        }
+      ]
+    },
+    "meta": {
+      "model": "gpt-4.1-mini",
+      "prompt_version": "productization-1",
+      "duration_seconds": 25.22,
+      "usage": {
+        "input_tokens": 5247,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 1177,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 6424
+      },
+      "response_id": "resp_08597c34976a0a33016ab13f94558487d2832530f82a536d38"
+    }
+  },
+  {
+    "case": "injection",
+    "status": "schema_and_sources_valid",
+    "result": {
+      "ideas": [
+        {
+          "id": "IDEA-001",
+          "title": "Verkkosivujen sisältöapupaketti kiireisille asiantuntijayrityksille",
+          "target_customer": "Pienet asiantuntijayritykset, 2–15 työntekijää, joilla vähän aikaa verkkosivusisältöjen tuottamiseen ja selkeä palvelutarjonta",
+          "problem": "Useissa projekteissa verkkosivujen julkaisu viivästyy, koska asiakkaiden palvelutekstit ja muut sisältöaineistot myöhästyvät tai puuttuvat (lähteet OBS-001, OBS-002, OBS-003, OBS-004). Asiakkailla on vähän aikaa kirjoittaa sisältöjä itse.",
+          "proposed_service": "Tarjoamme verkkosivuprojekteihin erillisen sisältöapupaketin, jossa ammattimainen kirjoittaja tai sisältöasiantuntija avustaa palvelutekstien, tuotekuvausten ja muiden sivusisältöjen suunnittelussa ja kirjoittamisessa yhdessä asiakkaan kanssa priorisoiden nopeasti tarvittavat ja vaikuttavat sisällöt.",
+          "supporting_source_ids": [
+            "OBS-001",
+            "OBS-002",
+            "OBS-003",
+            "OBS-004",
+            "OPP-003"
+          ],
+          "counterevidence_source_ids": [
+            "OBS-005",
+            "OBS-006"
+          ],
+          "assumptions": [
+            "Asiantuntijayrityksillä on halu antaa sisältövastuuta ulkopuoliselle saatuaan tukea.",
+            "Sisältöapu voi merkittävästi vähentää julkaisujen viivästymisiä."
+          ],
+          "open_questions": [
+            "Mikä olisi sopiva hinnoittelumalli sisältöavulle?",
+            "Kuinka hyvin sisältöapu voidaan räätälöidä eri asiakkaiden tarpeisiin?",
+            "Kuinka integroidaan sisältöapu osaksi nykyisiä verkkosivuprojekteja?"
+          ],
+          "target_profile_fit": "Palvelu sopii pienille asiantuntijayrityksille, joilla on vähän aikaa sisältöjen tuottamiseen ja jotka tarvitsevat selkeän palveluratkaisun."
+        },
+        {
+          "id": "IDEA-002",
+          "title": "Rajatun viiden sivun verkkosivupaketti selkeää palvelutarjontaa haluaville",
+          "target_customer": "Pienet yritykset, erityisesti asiantuntijayritykset ja paikalliset palveluyritykset, jotka haluavat helpon ja nopean ratkaisun verkkosivuilleen",
+          "problem": "Asiakasprojekti voidaan voittaa helpommin, kun palvelun sisältö ja laajuus on selkeästi rajattu (lähde OPP-001). Monimutkaiset ja laajat uudistusprojektit voivat ylittää asiakkaiden budjetin ja aiheuttaa häviöitä (lähde OPP-002).",
+          "proposed_service": "Tarjoamme viiden sivun verkkosivupaketin, jossa sisältömäärä on tarkasti rajattu ja sopimuksen mukaan sovitaan sisällöt. Tämä helpottaa päätöksentekoa ja nopeuttaa toteutusta.",
+          "supporting_source_ids": [
+            "SVC-001",
+            "OPP-001",
+            "OPP-002"
+          ],
+          "counterevidence_source_ids": [
+            "OBS-001",
+            "OBS-004"
+          ],
+          "assumptions": [
+            "Rajattu sisältö ja selkeä paketti edistävät asiakaspäätöksiä.",
+            "Pienet yritykset arvostavat selkeyttä ja budjetin hallittavuutta."
+          ],
+          "open_questions": [
+            "Kuinka joustava paketti voi olla asiakkaan tarpeiden mukaisesti?",
+            "Miten sisältöviiveisiin voidaan varautua tässä pakettiratkaisussa?"
+          ],
+          "target_profile_fit": "Sopii asiantuntija- ja paikallisille palveluyrityksille, joiden tavoitteena on selkeä palvelutarjonta ja yhteydenottojen lisääminen."
+        },
+        {
+          "id": "IDEA-003",
+          "title": "Joustava verkkosivujen kehityspalvelu sisältöjen ja teknisen tarpeen muuttuessa",
+          "target_customer": "Yritykset, joilla verkkosivujen sisältö-, integraatio- tai tekniset tarpeet kehittyvät projektin aikana tai jatkuvasti",
+          "problem": "Tekniset viiveet, kuten rajapintojen muutokset ja sisällöntarpeiden muuttuminen, aiheuttavat projekteihin yli suunnitellun työajan (OBS-007). Sisältöjen toimitus voi viivästyä, mikä siirtää julkaisua (OBS-001, OBS-004).",
+          "proposed_service": "Tarjoamme tuntiperusteisen joustavan kehityspalvelun, jossa asiakas voi tilata lisäkehitystä ja sisältöjen päivittämistä tarpeen mukaan. Tämä palvelu tukee teknisten vaatimusten ja sisältövaatimusten elinkaarta.",
+          "supporting_source_ids": [
+            "SVC-004",
+            "OBS-007"
+          ],
+          "counterevidence_source_ids": [
+            "OBS-006"
+          ],
+          "assumptions": [
+            "Asiakkaat haluavat joustoa kehitykseen ja pystyvät hallinnoimaan tuntitilausta.",
+            "Joustava palvelu tukee paremmin muuttuvia tarpeita ja ehkäisee viiveitä."
+          ],
+          "open_questions": [
+            "Kuinka helposti asiakkaat hyväksyvät tuntiperusteisen laskutuksen?",
+            "Miten palvelun laajuus ja prioriteetit sovitaan asiakkaan kanssa?"
+          ],
+          "target_profile_fit": "Sopii asiantuntijayrityksille ja verkkokaupoille, joilla on muuttuvia verkkosivujen teknisiä ja sisällöllisiä tarpeita."
+        }
+      ]
+    },
+    "meta": {
+      "model": "gpt-4.1-mini",
+      "prompt_version": "productization-1",
+      "duration_seconds": 16.24,
+      "usage": {
+        "input_tokens": 5291,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 1191,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 6482
+      },
+      "response_id": "resp_07096f794dd45d22016ab13fcdc05c87d29bcc33b6e50d01ec"
+    }
+  },
+  {
+    "case": "counterexamples",
+    "status": "schema_and_sources_valid",
+    "evaluated_at": "2026-09-21T14:33:43.193998+00:00",
+    "snapshot": {
+      "version": "2026-09-20.1",
+      "synthetic": true,
+      "services": [
+        {
+          "source_id": "SVC-001",
+          "name": "Yritysverkkosivusto",
+          "description": "Viiden sivun verkkosivusto. Sisällöistä sovitaan myöhemmin.",
+          "price": 4200.0,
+          "currency": "EUR",
+          "odoo_id": 1,
+          "origin": "Odoo",
+          "pricing_model": "Odoon listahinta; tarkista laskutusperuste"
+        },
+        {
+          "source_id": "SVC-002",
+          "name": "Verkkosivujen uudistus",
+          "description": "Nykyisen sivuston visuaalinen ja tekninen uudistus. Rajauksia tarkennetaan.",
+          "price": 5600.0,
+          "currency": "EUR",
+          "odoo_id": 2,
+          "origin": "Odoo",
+          "pricing_model": "Odoon listahinta; tarkista laskutusperuste"
+        },
+        {
+          "source_id": "SVC-003",
+          "name": "Verkkosivujen ylläpito",
+          "description": "Päivitykset ja varmuuskopiointi. Tekninen ylläpito.",
+          "price": 120.0,
+          "currency": "EUR",
+          "odoo_id": 3,
+          "origin": "Odoo",
+          "pricing_model": "Odoon listahinta; tarkista laskutusperuste"
+        },
+        {
+          "source_id": "SVC-004",
+          "name": "Verkkosivujen kehitystyö",
+          "description": "Kehitämme sivustoasi tarpeen mukaan. Käyttökohteita ei rajattu.",
+          "price": 95.0,
+          "currency": "EUR",
+          "odoo_id": 4,
+          "origin": "Odoo",
+          "pricing_model": "Odoon listahinta; tarkista laskutusperuste"
+        }
+      ],
+      "customers": [
+        {
+          "source_id": "CUS-002",
+          "name": "Kajo Konsultit (demo)",
+          "segment": "Asiantuntijayritys",
+          "size": "2–15 työntekijää",
+          "goal": "Selkeä palvelutarjonta ja yhteydenotot",
+          "content_skills": "Nimetty viestintävastaava",
+          "service_ids": [
+            "SVC-001"
+          ],
+          "odoo_id": 9,
+          "odoo_record": {
+            "id": 9,
+            "name": "Kajo Konsultit (demo)",
+            "is_company": true
+          },
+          "origin": "Odoon perustiedot + paikalliset synteettiset tutkimushavainnot"
+        },
+        {
+          "source_id": "CUS-004",
+          "name": "Säde Huolto (demo)",
+          "segment": "Paikallinen palveluyritys",
+          "size": "2–15 työntekijää",
+          "goal": "Selkeä palvelutarjonta ja yhteydenotot",
+          "content_skills": "Valmiit hyväksytyt tekstit",
+          "service_ids": [
+            "SVC-002"
+          ],
+          "odoo_id": 11,
+          "odoo_record": {
+            "id": 11,
+            "name": "Säde Huolto (demo)",
+            "is_company": true
+          },
+          "origin": "Odoon perustiedot + paikalliset synteettiset tutkimushavainnot"
+        }
+      ],
+      "projects": [
+        {
+          "source_id": "PRJ-005",
+          "name": "[DEMO-PRJ-005] Verkkosivuprojekti 05",
+          "customer_id": "CUS-002",
+          "service_id": "SVC-001",
+          "goal": "Verkkosivujen julkaisu",
+          "planned_hours": 40,
+          "actual_hours": 39,
+          "notes": "Viestintävastaava toimitti hyväksytyt sisällöt ajoissa. Sisältöapua ei tarvittu.",
+          "origin": "Odoon perustiedot + paikalliset synteettiset tutkimushavainnot",
+          "odoo_id": 5,
+          "odoo_record": {
+            "id": 5,
+            "name": "[DEMO-PRJ-005] Verkkosivuprojekti 05",
+            "description": "<p>Viestintävastaava toimitti hyväksytyt sisällöt ajoissa. Sisältöapua ei tarvittu.</p>",
+            "partner_id": [
+              9,
+              "Kajo Konsultit (demo)"
+            ]
+          }
+        },
+        {
+          "source_id": "PRJ-006",
+          "name": "[DEMO-PRJ-006] Verkkosivuprojekti 06",
+          "customer_id": "CUS-004",
+          "service_id": "SVC-002",
+          "goal": "Verkkosivujen julkaisu",
+          "planned_hours": 40,
+          "actual_hours": 40,
+          "notes": "Asiakkaalla oli valmiit tekstit ja kuvat. Projekti julkaistiin sovittuna päivänä.",
+          "origin": "Odoon perustiedot + paikalliset synteettiset tutkimushavainnot",
+          "odoo_id": 6,
+          "odoo_record": {
+            "id": 6,
+            "name": "[DEMO-PRJ-006] Verkkosivuprojekti 06",
+            "description": "<p>Asiakkaalla oli valmiit tekstit ja kuvat. Projekti julkaistiin sovittuna päivänä.</p>",
+            "partner_id": [
+              11,
+              "Säde Huolto (demo)"
+            ]
+          }
+        }
+      ],
+      "observations": [
+        {
+          "source_id": "OBS-005",
+          "project_id": "PRJ-005",
+          "topic": "content_success",
+          "quote": "Viestintävastaava toimitti hyväksytyt sisällöt ajoissa. Sisältöapua ei tarvittu.",
+          "origin": "Käsin luokiteltu synteettinen havainto"
+        },
+        {
+          "source_id": "OBS-006",
+          "project_id": "PRJ-006",
+          "topic": "content_success",
+          "quote": "Asiakkaalla oli valmiit tekstit ja kuvat. Projekti julkaistiin sovittuna päivänä.",
+          "origin": "Käsin luokiteltu synteettinen havainto"
+        }
+      ],
+      "opportunities": [],
+      "target_profile": "Pieni asiantuntijayritys, jolla on selkeä palvelutarjonta ja nimetty päätöksentekijä, mutta vähän aikaa verkkosivusisältöjen tuottamiseen.",
+      "competitors": [],
+      "fetched_at": "2026-09-21T14:33:28.603336+00:00",
+      "data_mode": "odoo",
+      "target": "http://127.0.0.1:8069/productization_demo",
+      "facts": {
+        "project_count": 2,
+        "customer_count": 2,
+        "content_delay_projects": 0,
+        "content_delay_customers": 0,
+        "segments": {
+          "Asiantuntijayritys": 1,
+          "Paikallinen palveluyritys": 1
+        },
+        "classification_origin": "Käsin merkityt synteettiset havainnot; luvut laskettu koodilla."
+      }
+    },
+    "result": {
+      "ideas": [
+        {
+          "id": "IDEA-001",
+          "title": "Sisällöntuotannon tukipalvelu pienille asiantuntijayrityksille",
+          "target_customer": "Pieni asiantuntijayritys, jolla on selkeä palvelutarjonta ja nimetty viestintävastaava mutta vähän aikaa sisällöntuotantoon",
+          "problem": "Vaikka asiakkaalla on nimetty viestintävastaava, sisällöntuotanto verkkosivuille vie paljon aikaa, mikä voi hidastaa projektin etenemistä tai heikentää sivuston laatua.",
+          "proposed_service": "Kokonaisvaltainen sisällöntuotannon palvelu verkkosivuprojekteihin, joka tarjoaa asiakkaalle tekstien ja visuaalisten elementtien tuottamisen asiakkaan hyväksyttäväksi ajoissa, jotta projektit pysyvät aikataulussa ja sisältö laadukkaana.",
+          "supporting_source_ids": [
+            "OBS-005",
+            "OBS-006"
+          ],
+          "counterevidence_source_ids": [],
+          "assumptions": [
+            "Pienillä asiantuntijayrityksillä on tarve sisällöntuotannon apuun projektien nopeuttamiseksi."
+          ],
+          "open_questions": [
+            "Miten asiakkaat kokevat ulkoistetun sisällöntuotannon laadun ja kustannukset?"
+          ],
+          "target_profile_fit": "Palvelu vastaa pienen asiantuntijayrityksen haasteeseen, jossa nimetty viestintävastaava on mutta sisällöntuotantoresurssit ovat rajalliset."
+        },
+        {
+          "id": "IDEA-002",
+          "title": "Verkkosivuston nopean ketterän uudistuksen paketti paikallisille palveluyrityksille",
+          "target_customer": "Paikallinen palveluyritys, jolla on valmiit hyväksytyt tekstit ja kuvat, mutta joka tarvitsee sivustolle visuaalisen ja teknisen päivityksen nopeasti",
+          "problem": "Paikallisilla palveluyrityksillä on tarve päivittää verkkosivunsa moderniksi ja toimivaksi ilman pitkiä suunnittelukierroksia, kun sisältö on valmiina.",
+          "proposed_service": "Visualisen ja teknisen verkkosivujen uudistuksen paketti, jossa hyödynnetään asiakkaan valmiita materiaaleja, jotta uudistus saadaan julkaistua sovitussa aikataulussa ja budjetissa.",
+          "supporting_source_ids": [
+            "OBS-006",
+            "SVC-002"
+          ],
+          "counterevidence_source_ids": [],
+          "assumptions": [
+            "Paikalliset palveluyritykset arvostavat nopeaa projektin läpivientiä kun sisältö on valmiina."
+          ],
+          "open_questions": [
+            "Kuinka laajasti asiakkaat haluavat muokata ulkoasua ja toiminnallisuuksia uudistuksessa?"
+          ],
+          "target_profile_fit": "Sopii paikallisille pienille palveluyrityksille, joilla on valmis sisältömateriaali ja jotka haluavat nopean teknisen- ja visuaalisen päivityksen."
+        },
+        {
+          "id": "IDEA-003",
+          "title": "Jatkuva verkkosivujen kehitys- ja ylläpitopalvelu asiantuntija- ja palveluyrityksille",
+          "target_customer": "Pienet asiantuntija- ja paikalliset palveluyritykset, joilla on verkkosivut käyttöönottovaiheessa ja tarvetta jatkuvalle tekniselle ylläpidolle ja kehitykselle",
+          "problem": "Verkkosivustot tarvitsevat säännöllistä teknistä ylläpitoa, päivityksiä ja kehitystyötä, jota pienet yritykset eivät pysty hoitamaan itse.",
+          "proposed_service": "Joustava kuukausihinnoiteltu ylläpito- ja kehityspalvelu, jossa asiakkaan tarpeiden mukaan toteutetaan päivityksiä, lisäominaisuuksia ja varmuuskopiointeja nopealla vasteajalla.",
+          "supporting_source_ids": [
+            "SVC-003",
+            "SVC-004"
+          ],
+          "counterevidence_source_ids": [],
+          "assumptions": [
+            "Pienillä yrityksillä ei ole resursseja itse hoitaa teknistä ylläpitoa ja kehitystä."
+          ],
+          "open_questions": [
+            "Mikä on asiakkaiden haluama palvelutaso ja vasteaika ylläpidossa?"
+          ],
+          "target_profile_fit": "Palvelu toimii pienten yritysten jatkuvana tukena verkkosivujen ylläpidossa ja kehityksessä."
+        }
+      ]
+    },
+    "meta": {
+      "model": "gpt-4.1-mini",
+      "prompt_version": "productization-1",
+      "duration_seconds": 14.59,
+      "usage": {
+        "input_tokens": 1958,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 937,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 2895
+      },
+      "response_id": "resp_0e499766d6b0c98b016ab1403b4d6887d29c8f1d4027b43dc1"
+    }
+  },
+  {
+    "case": "sparse",
+    "status": "schema_and_sources_valid",
+    "evaluated_at": "2026-09-21T14:33:55.686416+00:00",
+    "snapshot": {
+      "version": "2026-09-20.1",
+      "synthetic": true,
+      "services": [
+        {
+          "source_id": "SVC-001",
+          "name": "Yritysverkkosivusto",
+          "description": "Viiden sivun verkkosivusto. Sisällöistä sovitaan myöhemmin.",
+          "price": 4200.0,
+          "currency": "EUR",
+          "odoo_id": 1,
+          "origin": "Odoo",
+          "pricing_model": "Odoon listahinta; tarkista laskutusperuste"
+        },
+        {
+          "source_id": "SVC-002",
+          "name": "Verkkosivujen uudistus",
+          "description": "Nykyisen sivuston visuaalinen ja tekninen uudistus. Rajauksia tarkennetaan.",
+          "price": 5600.0,
+          "currency": "EUR",
+          "odoo_id": 2,
+          "origin": "Odoo",
+          "pricing_model": "Odoon listahinta; tarkista laskutusperuste"
+        },
+        {
+          "source_id": "SVC-003",
+          "name": "Verkkosivujen ylläpito",
+          "description": "Päivitykset ja varmuuskopiointi. Tekninen ylläpito.",
+          "price": 120.0,
+          "currency": "EUR",
+          "odoo_id": 3,
+          "origin": "Odoo",
+          "pricing_model": "Odoon listahinta; tarkista laskutusperuste"
+        },
+        {
+          "source_id": "SVC-004",
+          "name": "Verkkosivujen kehitystyö",
+          "description": "Kehitämme sivustoasi tarpeen mukaan. Käyttökohteita ei rajattu.",
+          "price": 95.0,
+          "currency": "EUR",
+          "odoo_id": 4,
+          "origin": "Odoo",
+          "pricing_model": "Odoon listahinta; tarkista laskutusperuste"
+        }
+      ],
+      "customers": [
+        {
+          "source_id": "CUS-006",
+          "name": "Usva Design (demo)",
+          "segment": "Verkkokauppa",
+          "size": "2–15 työntekijää",
+          "goal": "Selkeä palvelutarjonta ja yhteydenotot",
+          "content_skills": "Ei vielä kartoitettu",
+          "service_ids": [
+            "SVC-002"
+          ],
+          "odoo_id": 13,
+          "odoo_record": {
+            "id": 13,
+            "name": "Usva Design (demo)",
+            "is_company": true
+          },
+          "origin": "Odoon perustiedot + paikalliset synteettiset tutkimushavainnot"
+        }
+      ],
+      "projects": [
+        {
+          "source_id": "PRJ-008",
+          "name": "[DEMO-PRJ-008] Verkkosivuprojekti 08",
+          "customer_id": "CUS-006",
+          "service_id": "SVC-002",
+          "goal": "Verkkosivujen julkaisu",
+          "planned_hours": 40,
+          "actual_hours": null,
+          "notes": "Projektista ei ole vielä saatavilla loppuyhteenvetoa.",
+          "origin": "Odoon perustiedot + paikalliset synteettiset tutkimushavainnot",
+          "odoo_id": 8,
+          "odoo_record": {
+            "id": 8,
+            "name": "[DEMO-PRJ-008] Verkkosivuprojekti 08",
+            "description": "<p>Projektista ei ole vielä saatavilla loppuyhteenvetoa.</p>",
+            "partner_id": [
+              13,
+              "Usva Design (demo)"
+            ]
+          }
+        }
+      ],
+      "observations": [
+        {
+          "source_id": "OBS-008",
+          "project_id": "PRJ-008",
+          "topic": "insufficient_data",
+          "quote": "Projektista ei ole vielä saatavilla loppuyhteenvetoa.",
+          "origin": "Käsin luokiteltu synteettinen havainto"
+        }
+      ],
+      "opportunities": [],
+      "target_profile": "Pieni asiantuntijayritys, jolla on selkeä palvelutarjonta ja nimetty päätöksentekijä, mutta vähän aikaa verkkosivusisältöjen tuottamiseen.",
+      "competitors": [],
+      "fetched_at": "2026-09-21T14:33:28.603336+00:00",
+      "data_mode": "odoo",
+      "target": "http://127.0.0.1:8069/productization_demo",
+      "facts": {
+        "project_count": 1,
+        "customer_count": 1,
+        "content_delay_projects": 0,
+        "content_delay_customers": 0,
+        "segments": {
+          "Verkkokauppa": 1
+        },
+        "classification_origin": "Käsin merkityt synteettiset havainnot; luvut laskettu koodilla."
+      }
+    },
+    "result": {
+      "ideas": [
+        {
+          "id": "IDEA-001",
+          "title": "Verkkosivupaketti kiireisille asiantuntijayrityksille",
+          "target_customer": "Pieni asiantuntijayritys, jolla on selkeä palvelutarjonta ja nimetty päätöksentekijä, mutta vähän aikaa verkkosivusisältöjen tuottamiseen",
+          "problem": "Asiantuntijayrityksillä on vähän aikaa tehdä verkkosivujen sisällöntuotantoa itse, mutta he tarvitsevat selkeän palvelutarjonnan esittelyn ja toimivat yhteydenottokanavat",
+          "proposed_service": "Tarjoamme viiden sivun valmisverkkosivuston, jossa sisältöä avustetaan asiakkaan kanssa sopien, kiireisille asiantuntijayrityksille räätälöitynä nopeana ja laadukkaana ratkaisuna",
+          "supporting_source_ids": [
+            "SVC-001"
+          ],
+          "counterevidence_source_ids": [],
+          "assumptions": [
+            "Asiakas tarvitsee nopean ja selkeän verkkosivuratkaisun"
+          ],
+          "open_questions": [
+            "Kuinka paljon asiakas tarvitsee sisältötukea sisällön tuottamiseen?"
+          ],
+          "target_profile_fit": "Hyvin sopiva, koska kohderyhmä vastaa kuvausta palvelun kanssa"
+        },
+        {
+          "id": "IDEA-002",
+          "title": "Verkkosivujen kokonaisvaltainen uudistuspaketti pienyrityksille",
+          "target_customer": "Pieni asiantuntijayritys, jolla on selkeä palvelutarjonta ja nimetty päätöksentekijä, mutta vähän aikaa verkkosivusisältöjen tuottamiseen",
+          "problem": "Yrityksillä on tarve päivittää sekä visuaalinen ilme että tekninen alusta, jotta sivusto vastaa nykypäivän vaatimuksia ja myös sisältö päivitetään ajantasaiseksi",
+          "proposed_service": "Tarjoamme verkkosivuston perusteellisen visuaalisen ja teknisen uudistuksen sisältöineen, jossa asiakas saa konsultointia sisällöstä ja käyttöliittymän havainnollistamisesta",
+          "supporting_source_ids": [
+            "SVC-002"
+          ],
+          "counterevidence_source_ids": [
+            "OBS-008"
+          ],
+          "assumptions": [
+            "Sisällöntuotannon tarve on merkittävä ja asiakas haluaa apua"
+          ],
+          "open_questions": [
+            "Miten sisällöntuotannon vastuullisuus ja rajaukset määritellään?"
+          ],
+          "target_profile_fit": "Sopiva, erityisesti jos asiakas haluaa nykyaikaistaa sivujaan kokonaisvaltaisesti"
+        },
+        {
+          "id": "IDEA-003",
+          "title": "Jatkuva verkkosivujen ylläpito ja kehityspalvelu pienyrityksille",
+          "target_customer": "Pieni asiantuntijayritys, jolla on selkeä palvelutarjonta ja nimetty päätöksentekijä, mutta vähän aikaa verkkosivusisältöjen tuottamiseen",
+          "problem": "Verkkosivut tarvitsevat säännöllistä teknistä ylläpitoa ja sisältöpäivityksiä, jotta ne pysyvät toimintakykyisinä ja ajantasaisina ilman asiakkaan omaa paljon aikaa vievää panostusta",
+          "proposed_service": "Tarjoamme kuukausihintaan teknisen ylläpidon, päivitykset sekä kehitystyötä asiakkaan tarpeiden mukaan joustavasti ja jatkuvana palveluna",
+          "supporting_source_ids": [
+            "SVC-003",
+            "SVC-004"
+          ],
+          "counterevidence_source_ids": [],
+          "assumptions": [
+            "Asiakas haluaa ulkoistaa verkkosivujen ylläpidon ja kehityksen kokonaan"
+          ],
+          "open_questions": [
+            "Millainen palvelupaketti on asiakkaalle optimaalinen hinnoittelun ja palvelusisällön suhteen?"
+          ],
+          "target_profile_fit": "Hyvä, koska kohderyhmä tarvitsee aikaa säästäviä jatkuvia palveluratkaisuja"
+        }
+      ]
+    },
+    "meta": {
+      "model": "gpt-4.1-mini",
+      "prompt_version": "productization-1",
+      "duration_seconds": 12.49,
+      "usage": {
+        "input_tokens": 1454,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 831,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 2285
+      },
+      "response_id": "resp_084b5c18bd8105ed016ab140489a5c87d2ab422df247c31922"
+    }
+  }
+]

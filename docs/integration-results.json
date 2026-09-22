@@ -1,0 +1,27 @@
+{
+  "verified_at": "2026-09-21",
+  "odoo_mode": "odoo",
+  "seed_counts": [
+    4,
+    6,
+    8,
+    4
+  ],
+  "seed_repeated_twice": true,
+  "exported_product": {
+    "id": 5,
+    "name": "DEMO – Verkkosivujen sisältöstartti",
+    "type": "service",
+    "list_price": 760.0,
+    "default_code": "DEMO-SVC-8a73fd803fb1-V3",
+    "description_sale": "Sisältöstartti auttaa pientä asiantuntijayritystä valmistautumaan verkkosivuprojektiin. Työpajassa sovitaan palveluviestit, sivujen sisältörungot ja vastuut. Tavoitteena on vähentää sisältöjen odottamista; aikatauluvaikutusta ei luvata etukäteen.\n\nToimitussisältö:\nYksi 2 tunnin työpaja, enintään viiden sivun sisältörungot ja yksi kommentointikierros.\n\nRajaukset:\nEi verkkosivuston teknistä toteutusta, julkaisemista, valokuvausta, käännöksiä tai jatkuvaa ylläpitoa. Lisäkierrokset sovitaan erikseen.\n\nLähtötiedot:\nNimetty päätöksentekijä, palvelulista ja nykyiset materiaalit.\n\nVaiheet:\n1. Lähtötiedot\n2. Työpaja\n3. Sisältörungot\n4. Kommentointikierros ja hyväksyntä"
+  },
+  "card_id": "8a73fd803fb14aa39ce1706e4237bf84",
+  "version": 3,
+  "state": "exported",
+  "repeated_export_product_count": 1,
+  "browser_odoo_view": "verified product name, type, reference, EUR price and sale description",
+  "product_url": "http://127.0.0.1:8069/odoo/products/5",
+  "currency": "EUR",
+  "odoo_default_sales_tax_percent": 25.5
+}
