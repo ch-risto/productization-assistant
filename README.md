@@ -1,3 +1,7 @@
+# Docker-käynnistys
+
+Frontendin ja backendin yhteinen kontti on lisätty Composeen. Katso [Docker-käyttöohje ja siirtyminen nykyisestä ajosta](docs/docker.md). Kuvan ajonaikainen varmennus odottaa Docker-käyttöoikeutta; ohjeessa on tarkka testitila.
+
 # Palvelupaja
 
 Paikallinen verkkosivupalvelujen tuotteistamisen demo: aineisto → lähteistetyt tuoteideat → muokattava palvelukortti → ihmisen hyväksyntä → vienti.

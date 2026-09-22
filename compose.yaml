@@ -1,5 +1,37 @@
 name: productization-demo
 services:
+  palvelupaja:
+    build:
+      context: .
+      target: runtime
+    image: palvelupaja:local
+    init: true
+    ports:
+      - '127.0.0.1:8000:8000'
+    environment:
+      ODOO_MODE: ${ODOO_MODE:-odoo}
+      ODOO_URL: http://odoo:8069
+      ODOO_PUBLIC_URL: ${ODOO_PUBLIC_URL:-http://127.0.0.1:8069}
+      # Preserve the original local export/seed identity across containerization.
+      ODOO_TARGET_URL: ${ODOO_TARGET_URL:-http://127.0.0.1:8069}
+      ODOO_DATABASE: ${ODOO_DATABASE:-productization_demo}
+      ODOO_USERNAME: ${ODOO_USERNAME:-}
+      ODOO_API_KEY: ${ODOO_API_KEY:-}
+      LLM_PROVIDER: ${LLM_PROVIDER:-openai}
+      LLM_MODEL: ${LLM_MODEL:-gpt-4.1-mini}
+      LLM_API_KEY: ${LLM_API_KEY:-}
+      DATASET_PATH: ${DATASET_PATH:-demo-data/JJ-dataset2.json}
+      APP_DATABASE_URL: sqlite:///data/app.db
+    volumes:
+      - ./data:/app/data
+      - ./demo-data:/app/demo-data:ro
+    depends_on:
+      odoo:
+        condition: service_started
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
   db:
     image: postgres:15
     environment:

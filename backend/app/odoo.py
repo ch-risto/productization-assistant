@@ -67,7 +67,13 @@ class OdooAdapter:
             raise IntegrationError('Demon tietokannan nimen tulee olla productization_demo.')
         self.username = os.getenv('ODOO_USERNAME', '')
         self.key = os.getenv('ODOO_API_KEY', '')
-        self.target = self.url + '/' + self.database
+        self.public_url = os.getenv('ODOO_PUBLIC_URL', self.url).rstrip('/')
+        target_url = os.getenv('ODOO_TARGET_URL', self.url).rstrip('/')
+        for address in (self.public_url, target_url):
+            parts = urlparse(address)
+            if parts.hostname not in {'localhost', '127.0.0.1', '::1', 'odoo'} or parts.scheme not in {'http', 'https'} or parts.username:
+                raise IntegrationError('Demon julkisen osoitteen ja kohdetunnisteen tulee olla paikallisia.')
+        self.target = target_url + '/' + self.database
         self.uid = None
         self.fields = {}
 
@@ -160,7 +166,7 @@ class OdooAdapter:
             'description_sale':text,'list_price':float(card['price']),'default_code':code}])
 
     def product_url(self, identifier):
-        return f'{self.url}/odoo/products/{identifier}'
+        return f'{self.public_url}/odoo/products/{identifier}'
 
 
 def adapter():

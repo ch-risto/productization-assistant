@@ -62,3 +62,15 @@ def test_connection_failure_is_safe(monkeypatch):
     with pytest.raises(odoo.IntegrationError, match='Odoo-kutsu epäonnistui') as exc:
         source.execute('product.template','search_read',[])
     assert 'Secret' not in str(exc.value)
+
+def test_container_transport_preserves_local_identity_and_browser_url(monkeypatch):
+    monkeypatch.setenv('ODOO_URL', 'http://odoo:8069')
+    monkeypatch.setenv('ODOO_PUBLIC_URL', 'http://127.0.0.1:8069')
+    monkeypatch.setenv('ODOO_TARGET_URL', 'http://127.0.0.1:8069')
+    source = odoo.OdooAdapter()
+    assert source.url == 'http://odoo:8069'
+    assert source.target == 'http://127.0.0.1:8069/productization_demo'
+    assert source.product_url(5) == 'http://127.0.0.1:8069/odoo/products/5'
+    monkeypatch.setenv('ODOO_TARGET_URL', 'https://production.example')
+    with pytest.raises(odoo.IntegrationError):
+        odoo.OdooAdapter()
