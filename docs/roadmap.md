@@ -22,3 +22,8 @@
 - Käyttökustannusten rajat, havainnointi, mallin versiot ja säännölliset arvioinnit.
 
 Tuotantoon siirtyminen on erillinen päätös. Tämä toimitus ei kytkeydy työnantajan palvelimeen eikä julkaise sovellusta verkkoon.
+
+
+## Päivitetty kehityspolku 22.9.2026
+
+Seuraavien ominaisuuksien ensisijainen suunnitelma: [yhteinen arkkitehtuuri ja aikataulu](jatkokehitys-yhteinen.md), [modulaarinen katalogi](suunnitelma-tuotekatalogi.md) ja [tarjousavustaja](suunnitelma-tarjousavustaja.md).
