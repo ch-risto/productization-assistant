@@ -63,6 +63,48 @@ def test_connection_failure_is_safe(monkeypatch):
         source.execute('product.template','search_read',[])
     assert 'Secret' not in str(exc.value)
 
+
+def test_projects_include_manual_records_and_preserve_demo_sources(tmp_path, monkeypatch):
+    monkeypatch.setenv('APP_DATABASE_URL', 'sqlite:///' + str(tmp_path / 'projects.db'))
+    store.init()
+    source = odoo.OdooAdapter()
+    project = odoo.fixture()['projects'][0]
+    with store.db(write=True) as c:
+        c.execute('INSERT INTO seed_map VALUES(?,?,?)', (source.target, project['source_id'], 1))
+    rows = [dict(id=i, name=f'Project {i}', description=False, partner_id=False) for i in range(1, 202)]
+    rows[-1].update(description='<p>New project brief</p>', partner_id=[999, 'New customer'])
+    calls = []
+    def read(model, domain, fields, offset=0):
+        assert model == 'project.project'
+        assert domain == []
+        calls.append(offset)
+        return rows[offset:offset + 200]
+    monkeypatch.setattr(source, 'read', read)
+    projects = source.list_projects()
+    assert calls == [0, 200]
+    assert len(projects) == 201
+    assert projects[0]['source_id'] == project['source_id']
+    assert projects[0]['notes'] == project['notes']
+    assert projects[-1]['source_id'] == 'ODOO-PRJ-201'
+    assert projects[-1]['description'] == '<p>New project brief</p>'
+    assert projects[-1]['odoo_record']['partner_id'] == [999, 'New customer']
+    assert projects[-1]['origin'] == 'Odoo'
+    assert 'notes' not in projects[-1]
+    assert projects[1]['description'] == ''
+    assert projects[1]['customer_id'] is None
+    assert len({p['source_id'] for p in projects}) == 201
+
+
+def test_project_import_without_seed_mapping(tmp_path, monkeypatch):
+    monkeypatch.setenv('APP_DATABASE_URL', 'sqlite:///' + str(tmp_path / 'empty.db'))
+    store.init()
+    source = odoo.OdooAdapter()
+    monkeypatch.setattr(source, 'read', lambda *args, **kwargs: [
+        {'id':42, 'name':'Manual project', 'description':'Brief', 'partner_id':False}])
+    assert source.list_projects()[0]['source_id'] == 'ODOO-PRJ-42'
+    monkeypatch.setattr(source, 'read', lambda *args, **kwargs: [])
+    assert source.list_projects() == []
+
 def test_container_transport_preserves_local_identity_and_browser_url(monkeypatch):
     monkeypatch.setenv('ODOO_URL', 'http://odoo:8069')
     monkeypatch.setenv('ODOO_PUBLIC_URL', 'http://127.0.0.1:8069')

@@ -3,9 +3,9 @@ import os
 import time
 from openai import OpenAI
 from .schemas import Ideas, CardContent
-from .data import ROOT, validate_sources
+from .data import ROOT, source_index, validate_sources
 
-PROMPT_VERSION = 'productization-4'
+PROMPT_VERSION = 'productization-5'
 SYSTEM = '''Olet palvelujen tuotteistamisen avustaja. Päättele toimiala ja mahdolliset kehitystarpeet annetusta aineistosta.
 Älä suosi ennalta mitään palvelutyyppiä, ongelmaa tai ratkaisua. Aiheluokat ovat aineiston merkintöjä, eivät valmiita johtopäätöksiä.
 Erota yrityksen sisäinen kehitystarve asiakkaalle myytävästä palvelusta. Älä oleta niiden olevan sama asia. Vastaa suomeksi.
@@ -48,6 +48,28 @@ def call(schema, payload, instruction):
     }
 
 
+def call_with_sources(schema, payload, instruction):
+    snapshot = payload['snapshot'] if schema is CardContent else payload
+    allowed = sorted(source_index(snapshot))
+    instruction += ('\nLähdeviitteissä saa käyttää vain seuraavan listan täsmällisiä source_id-arvoja. '
+                    'Älä johda tunnisteita nimistä, kuvauksista, DEMO-koodeista tai Odoon numeroista. '
+                    'Sallitut lähdetunnisteet: ' + json.dumps(allowed, ensure_ascii=False))
+    for attempt in range(2):
+        parsed, meta = call(schema, payload, instruction)
+        ids = (parsed.source_ids if schema is CardContent else
+               [s for idea in parsed.ideas for s in idea.supporting_source_ids + idea.counterevidence_source_ids])
+        try:
+            validate_sources(ids, snapshot)
+        except ValueError as exc:
+            if attempt:
+                raise
+            instruction += ('\nEdellinen vastaus hylättiin: ' + str(exc)
+                            + '. Laadi vastaus uudelleen käyttäen vain sallittuja lähteitä. '
+                            'Älä korvaa viitettä toisella ilman sen sisältöön perustuvaa tukea.')
+        else:
+            return parsed, {**meta, 'source_validation_retries':attempt}
+
+
 def analyze(snapshot, mode):
     if not snapshot['observations']:
         raise ValueError('Aineistossa ei ole havaintoja. Lisää aineisto ennen analyysiä.')
@@ -61,7 +83,7 @@ def analyze(snapshot, mode):
         parsed = Ideas.model_validate(json.loads((ROOT/'demo-data/example-ideas.json').read_text(encoding='utf-8')))
         meta = {'model':'Tallennettu esimerkkivastaus, ei malliajo', 'prompt_version':PROMPT_VERSION, 'duration_seconds':0, 'usage':None}
     else:
-        parsed, meta = call(Ideas, snapshot, 'Laadi 2–3 aineistosta johdettua, toisistaan eroavaa palveluhypoteesia. Jokaisella tulee olla vähintään yksi tukeva lähde. Jos näyttö koskee vain sisäistä kehitystä tai on heikkoa, kerro tämä oletuksissa ja avoimissa kysymyksissä; älä esitä asiakaskysyntää todettuna.')
+        parsed, meta = call_with_sources(Ideas, snapshot, 'Laadi 2–3 aineistosta johdettua, toisistaan eroavaa palveluhypoteesia. Jokaisella tulee olla vähintään yksi tukeva lähde. Jos näyttö koskee vain sisäistä kehitystä tai on heikkoa, kerro tämä oletuksissa ja avoimissa kysymyksissä; älä esitä asiakaskysyntää todettuna.')
     ids = [i.id for i in parsed.ideas]
     if len(set(ids)) != len(ids):
         raise ValueError('Ideoiden tunnisteet eivät ole yksilöllisiä.')
@@ -85,7 +107,7 @@ def generate_card(idea, snapshot, mode):
             source_ids=idea['supporting_source_ids'], open_questions=idea['open_questions'],
         )
         return card, {'model':'Tallennettu esimerkkipohja', 'prompt_version':PROMPT_VERSION}
-    card, meta = call(CardContent, {'idea':idea,'snapshot':snapshot}, 'Laadi rajattu palvelukorttiluonnos. Älä anna numeerista hintaa. Viittaa vain annettuihin lähteisiin.')
+    card, meta = call_with_sources(CardContent, {'idea':idea,'snapshot':snapshot}, 'Laadi rajattu palvelukorttiluonnos. Älä anna numeerista hintaa. Viittaa vain annettuihin lähteisiin.')
     validate_sources(card.source_ids, snapshot)
     if not card.source_ids:
         raise ValueError('Palvelukortilta puuttuvat lähteet.')

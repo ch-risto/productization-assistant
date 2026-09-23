@@ -46,6 +46,7 @@ Odoo-/fixturetila ja OpenAI-/esimerkkitila ovat toisistaan riippumattomia. **My�
 
 1. Avaa **Aineisto** ja paina tarvittaessa **Päivitä**.
 2. Tarkista yhteystila ja aineiston hakuaika. Päivitys ei muuta aikaisempien analyysien aineistoa: niihin tallennetaan oma tilannekuva.
+   Odoo-tilassa päivitys hakee myös Odoossa käsin lisätyt aktiiviset projektit, joihin integraatiokäyttäjällä on lukuoikeus. Projektista tuodaan nimi, kuvaus ja Odoon asiakasviite. Uudet projektit saavat lähdetunnisteen `ODOO-PRJ-<id>` ja ovat uuden analyysin käytettävissä. Niille ei muodosteta automaattisesti luokiteltuja havaintoja, työmääräarvioita tai segmenttejä. Demoprojektien aiemmat lähdetunnisteet ja paikalliset tutkimushavainnot säilyvät. Arkistoituja projekteja ei haeta. Asiakaskatalogin haku on edelleen rajattu demoaineistoon.
 3. Tutustu nykyiseen tarjontaan. Listahintaa ei voi verrata suoraan tunti- tai kuukausihintaan. Odoosta haetun palvelun laskutusperuste on tarkistettava erikseen.
 4. Avaa projektihavainto. Tarkista alkuperäinen teksti ja lähdetunniste. `OBS` tarkoittaa havaintoa, `PRJ` projektia, `CUS` asiakasta, `SVC` palvelua, `OPP` myyntimahdollisuutta ja `CMP` kilpailijakorttia.
 5. Lue myös vastaesimerkit. Sisältöapua ei pidä päätellä tarpeelliseksi asiakkaalle vain siksi, että muilla oli sisältöviiveitä.

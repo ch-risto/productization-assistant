@@ -107,12 +107,12 @@ class OdooAdapter:
             self.fields[model] = self.execute(model, 'fields_get', [], {'attributes':['type','selection','required']})
         return self.fields[model]
 
-    def read(self, model, domain, fields):
+    def read(self, model, domain, fields, offset=0):
         available = self.inspect(model)
         missing = set(fields) - set(available)
         if missing:
             raise IntegrationError('Odoosta puuttuu tarvittavia kenttiä: '+ ', '.join(sorted(missing)))
-        return self.execute(model, 'search_read', [domain], {'fields':fields, 'limit':200, 'order':'id'})
+        return self.execute(model, 'search_read', [domain], {'fields':fields, 'limit':200, 'offset':offset, 'order':'id'})
 
     def list_services(self):
         rows = self.read('product.template', [['default_code','=like','DEMO-SVC-%']], ['id','name','description_sale','list_price','default_code','type'])
@@ -141,7 +141,31 @@ class OdooAdapter:
         return self.mapped('customers','res.partner',['name','is_company'])
 
     def list_projects(self):
-        return self.mapped('projects','project.project',['name','description','partner_id'])
+        base = fixture()
+        with store.db() as c:
+            mapping = {r['source_id']:r['remote_id'] for r in c.execute(
+                'SELECT * FROM seed_map WHERE target=?', (self.target,))}
+        seeded = {mapping[p['source_id']]:p for p in base['projects'] if p['source_id'] in mapping}
+        customers = {mapping[p['source_id']]:p['source_id'] for p in base['customers'] if p['source_id'] in mapping}
+        result = []
+        offset = 0
+        while True:
+            rows = self.read('project.project', [], ['id','name','description','partner_id'], offset=offset)
+            for remote in rows:
+                item = seeded.get(remote['id'])
+                partner = remote.get('partner_id')
+                result.append({
+                    **(item or {'source_id':f"ODOO-PRJ-{remote['id']}",
+                                'customer_id':customers.get(partner[0]) if partner else None,
+                                'service_id':None}),
+                    'name':remote['name'], 'description':remote.get('description') or '',
+                    'odoo_id':remote['id'], 'odoo_record':remote,
+                    'origin':('Odoon perustiedot + paikalliset synteettiset tutkimushavainnot'
+                              if item else 'Odoo'),
+                })
+            if len(rows) < 200:
+                return result
+            offset += len(rows)
 
     def list_opportunities(self):
         return self.mapped('opportunities','crm.lead',['name','description','partner_id'])

@@ -64,6 +64,36 @@ def test_model_sources_and_empty_data(monkeypatch):
         llm.analyze(snap, 'live')
 
 
+def test_model_retries_name_based_source_reference(monkeypatch):
+    snap = workflow.snapshot()
+    result, _ = llm.analyze(snap, 'example')
+    for project in snap['projects']:
+        if project['source_id'] == 'PRJ-005':
+            project.update(source_id='ODOO-PRJ-5', name='[DEMO-PRJ-005] Project')
+    valid = copy.deepcopy(result)
+    for idea in valid['ideas']:
+        for field in ('supporting_source_ids', 'counterevidence_source_ids'):
+            idea[field] = ['ODOO-PRJ-5' if x == 'PRJ-005' else x for x in idea[field]]
+    invalid = copy.deepcopy(valid)
+    invalid['ideas'][0]['supporting_source_ids'] = ['PRJ-005']
+    calls = []
+    def respond(schema, payload, instruction):
+        calls.append(instruction)
+        assert '"ODOO-PRJ-5"' in instruction
+        return Ideas.model_validate(invalid if len(calls) == 1 else valid), {}
+    monkeypatch.setattr(llm, 'call', respond)
+    output, meta = llm.analyze(snap, 'live')
+    assert output == Ideas.model_validate(valid).model_dump()
+    assert len(calls) == 2
+    assert 'PRJ-005' in calls[1]
+    assert meta['source_validation_retries'] == 1
+    calls.clear()
+    monkeypatch.setattr(llm, 'call', lambda *args: (calls.append(1) or Ideas.model_validate(invalid), {}))
+    with pytest.raises(ValueError, match='PRJ-005'):
+        llm.analyze(snap, 'live')
+    assert len(calls) == 2
+
+
 def test_approval_version_price_and_history():
     card = draft()
     with pytest.raises(workflow.Conflict):
