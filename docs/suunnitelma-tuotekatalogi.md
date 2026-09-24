@@ -1,6 +1,17 @@
 # Suunnitelma 1: Odoon kanssa toimiva modulaarinen tuotekatalogi
 22.9.2026 · [Yhteinen tietomalli ja aikataulu](jatkokehitys-yhteinen.md)
 
+Toteutus aloitettu 23.9.2026: [ensimmäisen A0/A1-osuuden käyttö, rajaus ja seuraavat työt](katalogi-toteutus.md).
+Katalogieditori, sisältöversiot ja lukevan kyvykkyyskartoituksen toteutus ovat lisätty;
+tuolloin Odoo-julkaisu, Enterprise-varmennus ja pakettireseptit olivat vielä toteuttamatta.
+
+24.9.2026: [Perustuotteiden Odoo-vienti sekä työvaihe- ja tuntiperusteinen monituote-ehdotus](katalogivienti.md)
+on toteutettu. Yhden tuotteen palvelusta ei luoda erillistä pakettia.
+
+23.9.2026 jatko: [tuotteistusagentti](tuotteistusagentti.md) tuottaa palvelusta
+tarkistettavan pilkkomisen ja tallentaa perustuote- sekä koosteluonnokset.
+Varsinainen reseptien hyväksyntä ja Odoo-tarjouspohjavienti ovat edelleen jatkotöitä.
+
 ## Tavoiteltu muutos
 
 Palvelupaja ehdottaa uudelleenkäytettäviä myytäviä osia ja näyttää erikseen, miten niistä

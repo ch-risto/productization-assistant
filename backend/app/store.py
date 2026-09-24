@@ -45,6 +45,27 @@ def init():
         CREATE TABLE IF NOT EXISTS fixture_products(code TEXT PRIMARY KEY, payload TEXT NOT NULL);
         CREATE TABLE IF NOT EXISTS seed_map(target TEXT NOT NULL, source_id TEXT NOT NULL, remote_id INTEGER NOT NULL, PRIMARY KEY(target,source_id));
         ''')
+    migrate()
+
+
+def migrate():
+    # Additive, transactional migration; legacy cards and export history stay intact.
+    with db(write=True) as c:
+        c.execute('CREATE TABLE IF NOT EXISTS schema_migrations(version INTEGER PRIMARY KEY)')
+        if not c.execute('SELECT 1 FROM schema_migrations WHERE version=1').fetchone():
+            c.execute('CREATE TABLE catalog_items(id TEXT PRIMARY KEY, payload TEXT NOT NULL)')
+            c.execute('CREATE TABLE catalog_versions(item_id TEXT NOT NULL REFERENCES catalog_items(id), version INTEGER NOT NULL, payload TEXT NOT NULL, PRIMARY KEY(item_id,version))')
+            c.execute('CREATE TABLE catalog_capabilities(id TEXT PRIMARY KEY, fetched_at TEXT NOT NULL, payload TEXT NOT NULL)')
+            c.execute('INSERT INTO schema_migrations VALUES(1)')
+        if not c.execute('SELECT 1 FROM schema_migrations WHERE version=2').fetchone():
+            c.execute('CREATE TABLE decompositions(id TEXT PRIMARY KEY, payload TEXT NOT NULL)')
+            c.execute('CREATE TABLE decomposition_versions(id TEXT NOT NULL REFERENCES decompositions(id), version INTEGER NOT NULL, payload TEXT NOT NULL, PRIMARY KEY(id,version))')
+            c.execute('CREATE TABLE recipes(id TEXT PRIMARY KEY, payload TEXT NOT NULL)')
+            c.execute('INSERT INTO schema_migrations VALUES(2)')
+        if not c.execute('SELECT 1 FROM schema_migrations WHERE version=3').fetchone():
+            c.execute('CREATE TABLE catalog_export_plans(id TEXT PRIMARY KEY, payload TEXT NOT NULL)')
+            c.execute('CREATE TABLE catalog_exports(item_id TEXT NOT NULL, target TEXT NOT NULL, status TEXT NOT NULL, payload TEXT NOT NULL, PRIMARY KEY(item_id,target))')
+            c.execute('INSERT INTO schema_migrations VALUES(3)')
 
 
 def encode(value):

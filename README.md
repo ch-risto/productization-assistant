@@ -4,6 +4,20 @@ Frontendin ja backendin yhteinen kontti on lisätty Composeen. Katso [Docker-kä
 
 # Palvelupaja
 
+24.9.2026: **perustuotteiden Odoo-vienti** on käytössä editorin esikatselun kautta.
+Agentti muodostaa ensin työvaihe- ja tuntijaon, sitten jokaiselle toimitettavalle
+osalle perustuotteen. Yhden osan palvelu tallennetaan suoraan perustuotteeksi.
+[Vientiohje ja uusi pilkkominen](docs/katalogivienti.md).
+
+Tuotteistusagentti pilkkoo palvelun nykyisiksi tuotteiksi, uusiksi tuote-ehdotuksiksi
+ja tarvittaessa avoimeksi asiantuntijatyöksi. Ehdotukset voi tarkistaa ja tallentaa
+katalogi- ja palvelukoosteluonnoksiksi. [Käyttö ja rajat](docs/tuotteistusagentti.md).
+
+23.9.2026: **Perustuotekatalogin ensimmäinen vaihe** on lisätty sivupalkkiin.
+Tuoteluonnokset, sisältöhyväksyntä, versiohistoria ja Odoon lukukartoitus:
+[käyttö ja toteutuksen rajaus](docs/katalogi-toteutus.md). Tätä vaihetta täydentävät
+yllä kuvatut 24.9. vienti ja palvelukoosteluonnokset.
+
 Paikallinen verkkosivupalvelujen tuotteistamisen demo: aineisto → lähteistetyt tuoteideat → muokattava palvelukortti → ihmisen hyväksyntä → vienti.
 
 ## Toteutuksen tila 21.9.2026

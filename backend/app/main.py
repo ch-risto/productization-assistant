@@ -8,7 +8,7 @@ from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 from openai import OpenAIError, RateLimitError
-from . import store, workflow, odoo
+from . import store, workflow, odoo, catalog, decomposition, catalog_export
 from .data import ROOT
 from .schemas import AnalyzeRequest, CreateCardRequest, CardEdit, VersionRequest, ProfileRequest
 
@@ -21,6 +21,7 @@ async def lifespan(app):
     # A crashed process cannot still own a pending export. Reconcile before any new write.
     with store.db(write=True) as c:
         c.execute("UPDATE exports SET status='uncertain' WHERE status='pending'")
+        c.execute("UPDATE catalog_exports SET status='uncertain' WHERE status='pending'")
     yield
 
 
@@ -122,6 +123,10 @@ def approve(card_id:str,body:VersionRequest):
 def export(card_id:str,body:VersionRequest):
     return workflow.export_card(card_id,body.expected_version)
 
+
+app.include_router(catalog.router)
+app.include_router(decomposition.router)
+app.include_router(catalog_export.router)
 
 dist=ROOT/'frontend/dist'
 if dist.exists():

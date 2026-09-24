@@ -26,6 +26,11 @@ class FixtureAdapter:
     mode = 'fixture'
     target = 'fixture'
 
+    def catalog_capabilities(self):
+        return {'target': self.target, 'mode': self.mode, 'company': None, 'models': {},
+                'units': [], 'checks': {}, 'workflow_verified': False,
+                'note': 'Esimerkkitila: Odoon kenttiä, oikeuksia tai työnkulkua ei ole varmennettu.'}
+
     def list_services(self):
         return fixture()['services']
 
@@ -106,6 +111,64 @@ class OdooAdapter:
         if model not in self.fields:
             self.fields[model] = self.execute(model, 'fields_get', [], {'attributes':['type','selection','required']})
         return self.fields[model]
+
+    def catalog_capabilities(self):
+        """Read-only A0 snapshot. Metadata never counts as a verified sales workflow."""
+        try:
+            self.connect()
+        except (xmlrpc.client.Error, OSError) as exc:
+            raise IntegrationError('Odoo-kartoitus epäonnistui. Tarkista palvelu, oikeudet ja asetukset.') from exc
+        users = self.execute('res.users', 'read', [[self.uid]], {'fields': ['company_id', 'company_ids']})
+        if not users or not users[0].get('company_id'):
+            raise IntegrationError('Odoon yrityskontekstia ei voitu varmistaa.')
+        company = users[0]['company_id']
+        context = {'allowed_company_ids': [company[0]]}
+        wanted = {
+            'product.template': ['type', 'uom_id', 'uom_po_id', 'invoice_policy', 'service_type',
+                                 'service_policy', 'service_tracking', 'project_id', 'project_template_id',
+                                 'company_id', 'taxes_id', 'currency_id', 'product_variant_ids'],
+            'product.product': ['product_tmpl_id', 'uom_id', 'active'],
+            'project.project': ['company_id', 'allow_billable', 'allow_timesheets'],
+            'sale.order.template': ['company_id', 'sale_order_template_line_ids', 'sale_order_template_option_ids'],
+        }
+        models = {}
+        for model, names in wanted.items():
+            try:
+                fields = self.execute(model, 'fields_get', [names],
+                                      {'attributes': ['type', 'selection', 'required', 'readonly'], 'context': context})
+                rights = {operation: bool(self.execute(model, 'check_access_rights', [operation],
+                          {'raise_exception': False, 'context': context})) for operation in ('read', 'create', 'write')}
+                models[model] = {'status': 'inspected', 'fields': fields, 'access_rights': rights,
+                                 'missing_fields': sorted(set(names) - set(fields))}
+            except IntegrationError:
+                models[model] = {'status': 'unverified', 'fields': {}, 'access_rights': {},
+                                 'note': 'Mallia ei voitu kartoittaa: tarkista moduuli ja käyttöoikeudet.'}
+        units = []
+        try:
+            while True:
+                page = self.execute('uom.uom', 'search_read', [[['active', '=', True]]],
+                                    {'fields': ['id', 'name', 'category_id', 'rounding', 'factor'],
+                                     'context': context, 'offset': len(units), 'limit': 200, 'order': 'id'})
+                units.extend(page)
+                if len(page) < 200:
+                    break
+            unit_status = 'inspected'
+        except IntegrationError:
+            units, unit_status = [], 'unverified'
+        product = models['product.template']
+        fields = product['fields']
+        def selection(field, value):
+            if product['status'] != 'inspected':
+                return 'unverified'
+            return 'available' if value in dict(fields.get(field, {}).get('selection', [])) else 'unavailable'
+        checks = {'fixed': selection('service_policy', 'ordered_prepaid'),
+                  'timesheet': selection('service_policy', 'delivered_timesheet'),
+                  'task_existing_project': selection('service_tracking', 'task_global_project'),
+                  'project_and_task': selection('service_tracking', 'task_in_project'),
+                  'subscriptions': 'unverified', 'milestones': 'unverified', 'units': unit_status}
+        return {'target': self.target, 'mode': self.mode, 'company': company, 'models': models,
+                'units': units, 'checks': checks, 'workflow_verified': False,
+                'note': 'Kenttävalinnat ja mallioikeudet kartoitettu. Tietuekohtaiset oikeudet, hinnastot, verot ja tilauksen vahvistuksen projektit/tehtävät vaativat erillisen testin.'}
 
     def read(self, model, domain, fields, offset=0):
         available = self.inspect(model)

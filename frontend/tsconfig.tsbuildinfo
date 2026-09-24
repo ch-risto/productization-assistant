@@ -1,1 +1,1 @@
-{"root":["./src/main.tsx"],"version":"5.9.3"}
+{"root":["./src/catalog.tsx","./src/catalogexport.tsx","./src/decomposition.tsx","./src/main.tsx"],"version":"5.9.3"}

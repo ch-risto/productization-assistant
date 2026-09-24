@@ -23,7 +23,7 @@ Luvut tulevat facts-objektista, älä keksi uusia tilastoja. Tavoiteasiakas on s
 Sinulla ei ole kirjoittavia työkaluja. Kaikki palvelut ovat ihmisen tarkistettavia luonnoksia.'''
 
 
-def call(schema, payload, instruction):
+def call(schema, payload, instruction, *, max_output_tokens=4500):
     if os.getenv('LLM_PROVIDER', 'openai') != 'openai':
         raise ValueError('Tässä demossa tuetaan OpenAI-palvelua.')
     key = os.getenv('LLM_API_KEY', '')
@@ -33,7 +33,7 @@ def call(schema, payload, instruction):
     start = time.monotonic()
     with OpenAI(api_key=key, timeout=60, max_retries=1) as client:
         response = client.responses.parse(
-            model=model, store=False, max_output_tokens=4500,
+            model=model, store=False, max_output_tokens=max_output_tokens,
             input=[{'role':'system','content':SYSTEM + '\n' + instruction},
                    {'role':'user','content':json.dumps(payload,ensure_ascii=False)}],
             text_format=schema,
